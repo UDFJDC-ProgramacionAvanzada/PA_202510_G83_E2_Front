@@ -1,5 +1,79 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
+/* Paleta de colores AlaMano */
+:root {
+  --alamano-primary: #3698bf;
+  --alamano-secondary: #36a6bf;
+  --alamano-light: #b6e7f2;
+  --alamano-dark: #0d0d0d;
+  --alamano-primary-hover: #2a7a9f;
+  --alamano-secondary-hover: #2a8a9f;
+}
+
+/* Sobrescribir colores primarios de Bootstrap */
+.btn-primary {
+  background-color: var(--alamano-primary);
+  border-color: var(--alamano-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--alamano-primary-hover);
+  border-color: var(--alamano-primary-hover);
+}
+
+.btn-outline-primary {
+  color: var(--alamano-primary);
+  border-color: var(--alamano-primary);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--alamano-primary);
+  border-color: var(--alamano-primary);
+}
+
+.text-primary {
+  color: var(--alamano-primary) !important;
+}
+
+.bg-primary {
+  background-color: var(--alamano-primary) !important;
+}
+
+/* Navbar personalizado */
+.navbar-alamano {
+  background-color: var(--alamano-primary) !important;
+  box-shadow: 0 2px 4px rgba(54, 152, 191, 0.1);
+}
+
+.navbar-alamano .navbar-brand {
+  color: white !important;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar-alamano .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.navbar-alamano .nav-link:hover {
+  color: white !important;
+}
+
+.navbar-alamano .btn-outline-primary {
+  color: white;
+  border-color: white;
+}
+
+.navbar-alamano .btn-outline-primary:hover {
+  background-color: white;
+  color: var(--alamano-primary);
+}
+
+.navbar-alamano .btn-outline-danger {
+  color: white;
+  border-color: #dc3545;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
@@ -9,29 +83,54 @@ body {
 }
 
 .hero-section {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../public/hero-background.jpg");
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(135deg, var(--alamano-primary) 0%, var(--alamano-secondary) 100%);
   color: white;
   padding: 100px 0;
+  position: relative;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("../public/hero-background.jpg") center / cover;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.hero-section>* {
+  position: relative;
+  z-index: 2;
 }
 
 .category-card {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  border: 1px solid rgba(54, 152, 191, 0.1);
 }
 
 .category-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(54, 152, 191, 0.15);
+  border-color: var(--alamano-light);
+}
+
+.category-card .text-primary {
+  color: var(--alamano-primary) !important;
 }
 
 .provider-card {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  border: 1px solid rgba(54, 152, 191, 0.1);
 }
 
 .provider-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(54, 152, 191, 0.15);
 }
 
 .star-rating {
@@ -41,6 +140,7 @@ body {
 .favorite-icon {
   cursor: pointer;
   transition: color 0.3s ease;
+  font-size: 1.2rem;
 }
 
 .favorite-icon.active {
@@ -48,7 +148,7 @@ body {
 }
 
 .profile-header {
-  background-color: #f8f9fa;
+  background: linear-gradient(135deg, var(--alamano-light) 0%, rgba(182, 231, 242, 0.7) 100%);
   padding: 30px 0;
   margin-bottom: 30px;
 }
@@ -59,7 +159,7 @@ body {
   object-fit: cover;
   border-radius: 50%;
   border: 5px solid white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(54, 152, 191, 0.3);
 }
 
 .gallery-image {
@@ -69,6 +169,13 @@ body {
   border-radius: 8px;
   margin-bottom: 15px;
   cursor: pointer;
+  transition: transform 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+  border-color: var(--alamano-light);
 }
 
 .availability-badge {
@@ -87,6 +194,23 @@ body {
   color: white;
 }
 
+/* Footer personalizado */
+.footer-alamano {
+  background-color: var(--alamano-dark) !important;
+  color: white;
+}
+
+.footer-alamano a {
+  color: var(--alamano-light);
+  text-decoration: none;
+}
+
+.footer-alamano a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Mejoras adicionales */
 .cursor-pointer {
   cursor: pointer;
 }
@@ -101,4 +225,102 @@ body {
 
 .text-decoration-none:hover {
   text-decoration: none !important;
+}
+
+/* Cards con tema AlaMano */
+.card-alamano {
+  border: 1px solid var(--alamano-light);
+  box-shadow: 0 2px 10px rgba(54, 152, 191, 0.1);
+}
+
+.card-alamano:hover {
+  box-shadow: 0 4px 20px rgba(54, 152, 191, 0.15);
+}
+
+/* Badges personalizados */
+.badge-alamano {
+  background-color: var(--alamano-secondary);
+  color: white;
+}
+
+/* Formularios */
+.form-control:focus {
+  border-color: var(--alamano-primary);
+  box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
+}
+
+.form-select:focus {
+  border-color: var(--alamano-primary);
+  box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
+}
+
+/* Tabs */
+.nav-tabs .nav-link.active {
+  color: var(--alamano-primary);
+  border-bottom-color: var(--alamano-primary);
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--alamano-primary);
+}
+
+/* Alertas personalizadas */
+.alert-alamano {
+  background-color: var(--alamano-light);
+  border-color: var(--alamano-secondary);
+  color: var(--alamano-dark);
+}
+
+/* Botones secundarios */
+.btn-alamano-secondary {
+  background-color: var(--alamano-secondary);
+  border-color: var(--alamano-secondary);
+  color: white;
+}
+
+.btn-alamano-secondary:hover {
+  background-color: var(--alamano-secondary-hover);
+  border-color: var(--alamano-secondary-hover);
+  color: white;
+}
+
+/* Elementos de acento */
+.accent-alamano {
+  color: var(--alamano-secondary);
+}
+
+.bg-light-alamano {
+  background-color: var(--alamano-light);
+}
+
+/* Separadores */
+.separator-alamano {
+  border-color: var(--alamano-light);
+}
+
+/* Dashboard específico */
+.dashboard-card {
+  border-left: 4px solid var(--alamano-primary);
+}
+
+.stats-card {
+  background: linear-gradient(135deg, var(--alamano-light) 0%, rgba(182, 231, 242, 0.5) 100%);
+  border: 1px solid var(--alamano-secondary);
+}
+
+/* Animaciones suaves */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

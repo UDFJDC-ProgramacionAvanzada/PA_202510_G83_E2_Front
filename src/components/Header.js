@@ -1,26 +1,34 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Navbar, Nav, Container, Button, Form, FormControl } from "react-bootstrap"
-import { Link, useNavigate } from "react-router-dom"
-import { useAuth } from "../context/AuthContext"
+import { useState } from "react";
+import {
+  Navbar,
+  Nav,
+  Container,
+  Button,
+  Form,
+  FormControl,
+} from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Header = () => {
-  const [searchQuery, setSearchQuery] = useState("")
-  const navigate = useNavigate()
-  const { isAuthenticated, user, logout } = useAuth()
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+  const { isAuthenticated, user, logout } = useAuth();
 
   const handleSearch = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (searchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery)}`)
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
     }
-  }
+  };
 
   return (
-    <Navbar bg="light" expand="lg" sticky="top" className="shadow-sm">
+    <Navbar className="navbar-alamano" expand="lg" sticky="top">
       <Container>
-        <Navbar.Brand as={Link} to="/" className="fw-bold text-primary">
+        <Navbar.Brand as={Link} to="/" className="fw-bold">
+          <i className="bi bi-hand-thumbs-up me-2"></i>
           AlaMano
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -33,39 +41,76 @@ const Header = () => {
               aria-label="Search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              style={{ minWidth: "300px" }}
             />
-            <Button variant="outline-primary" type="submit">
-              Buscar
+            <Button variant="outline-light" type="submit">
+              <i className="bi bi-search"></i>
             </Button>
           </Form>
           <Nav className="ms-auto">
             {isAuthenticated ? (
               <>
-                <Nav.Link as={Link} to="/favorites">
+                <Nav.Link
+                  as={Link}
+                  to="/favorites"
+                  className="d-flex align-items-center"
+                >
+                  <i className="bi bi-heart me-1"></i>
                   Favoritos
                 </Nav.Link>
                 {user?.isProvider ? (
-                  <Nav.Link as={Link} to="/provider-dashboard">
+                  <Nav.Link
+                    as={Link}
+                    to="/provider-dashboard"
+                    className="d-flex align-items-center"
+                  >
+                    <i className="bi bi-speedometer2 me-1"></i>
                     Dashboard
                   </Nav.Link>
                 ) : (
-                  <Nav.Link as={Link} to="/create-profile">
-                    Convertirse en proveedor
+                  <Nav.Link
+                    as={Link}
+                    to="/create-profile"
+                    className="d-flex align-items-center"
+                  >
+                    <i className="bi bi-plus-circle me-1"></i>
+                    Ser Proveedor
                   </Nav.Link>
                 )}
-                <Nav.Link as={Link} to="/profile">
+                <Nav.Link
+                  as={Link}
+                  to="/profile"
+                  className="d-flex align-items-center"
+                >
+                  <i className="bi bi-person me-1"></i>
                   Mi Perfil
                 </Nav.Link>
-                <Button variant="outline-danger" onClick={logout} className="ms-2">
-                  Cerrar Sesión
+                <Button
+                  variant="outline-danger"
+                  onClick={logout}
+                  className="ms-2"
+                  size="sm"
+                >
+                  <i className="bi bi-box-arrow-right me-1"></i>
+                  Salir
                 </Button>
               </>
             ) : (
               <>
-                <Nav.Link as={Link} to="/login">
+                <Nav.Link
+                  as={Link}
+                  to="/login"
+                  className="d-flex align-items-center"
+                >
+                  <i className="bi bi-box-arrow-in-right me-1"></i>
                   Iniciar Sesión
                 </Nav.Link>
-                <Nav.Link as={Link} to="/register">
+                <Nav.Link
+                  as={Link}
+                  to="/register"
+                  className="d-flex align-items-center"
+                >
+                  <i className="bi bi-person-plus me-1"></i>
                   Registrarse
                 </Nav.Link>
               </>
@@ -74,7 +119,7 @@ const Header = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
