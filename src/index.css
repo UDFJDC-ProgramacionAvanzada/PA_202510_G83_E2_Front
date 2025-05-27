@@ -210,7 +210,6 @@ body {
   text-decoration: underline;
 }
 
-/* Mejoras adicionales */
 .cursor-pointer {
   cursor: pointer;
 }
@@ -227,7 +226,6 @@ body {
   text-decoration: none !important;
 }
 
-/* Cards con tema AlaMano */
 .card-alamano {
   border: 1px solid var(--alamano-light);
   box-shadow: 0 2px 10px rgba(54, 152, 191, 0.1);
@@ -237,13 +235,11 @@ body {
   box-shadow: 0 4px 20px rgba(54, 152, 191, 0.15);
 }
 
-/* Badges personalizados */
 .badge-alamano {
   background-color: var(--alamano-secondary);
   color: white;
 }
 
-/* Formularios */
 .form-control:focus {
   border-color: var(--alamano-primary);
   box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
@@ -254,7 +250,6 @@ body {
   box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
 }
 
-/* Tabs */
 .nav-tabs .nav-link.active {
   color: var(--alamano-primary);
   border-bottom-color: var(--alamano-primary);
@@ -264,14 +259,12 @@ body {
   color: var(--alamano-primary);
 }
 
-/* Alertas personalizadas */
 .alert-alamano {
   background-color: var(--alamano-light);
   border-color: var(--alamano-secondary);
   color: var(--alamano-dark);
 }
 
-/* Botones secundarios */
 .btn-alamano-secondary {
   background-color: var(--alamano-secondary);
   border-color: var(--alamano-secondary);
@@ -284,7 +277,6 @@ body {
   color: white;
 }
 
-/* Elementos de acento */
 .accent-alamano {
   color: var(--alamano-secondary);
 }
@@ -293,12 +285,10 @@ body {
   background-color: var(--alamano-light);
 }
 
-/* Separadores */
 .separator-alamano {
   border-color: var(--alamano-light);
 }
 
-/* Dashboard específico */
 .dashboard-card {
   border-left: 4px solid var(--alamano-primary);
 }
@@ -308,7 +298,6 @@ body {
   border: 1px solid var(--alamano-secondary);
 }
 
-/* Animaciones suaves */
 .fade-in {
   animation: fadeIn 0.5s ease-in;
 }
