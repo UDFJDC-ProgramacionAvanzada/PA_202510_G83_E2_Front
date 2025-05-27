@@ -8,6 +8,7 @@ import {
   Button,
   Form,
   FormControl,
+  Dropdown,
 } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -15,7 +16,7 @@ import { useAuth } from "../context/AuthContext";
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, user, logout, isAdmin, loginAsAdmin } = useAuth();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -50,6 +51,16 @@ const Header = () => {
           <Nav className="ms-auto">
             {isAuthenticated ? (
               <>
+                {isAdmin() && (
+                  <Nav.Link
+                    as={Link}
+                    to="/admin"
+                    className="d-flex align-items-center"
+                  >
+                    <i className="bi bi-shield-check me-1"></i>
+                    Admin
+                  </Nav.Link>
+                )}
                 <Nav.Link
                   as={Link}
                   to="/favorites"
@@ -77,23 +88,39 @@ const Header = () => {
                     Ser Proveedor
                   </Nav.Link>
                 )}
-                <Nav.Link
-                  as={Link}
-                  to="/profile"
-                  className="d-flex align-items-center"
-                >
-                  <i className="bi bi-person me-1"></i>
-                  Mi Perfil
-                </Nav.Link>
-                <Button
-                  variant="outline-danger"
-                  onClick={logout}
-                  className="ms-2"
-                  size="sm"
-                >
-                  <i className="bi bi-box-arrow-right me-1"></i>
-                  Salir
-                </Button>
+                <Dropdown align="end">
+                  <Dropdown.Toggle
+                    variant="outline-light"
+                    id="user-dropdown"
+                    className="d-flex align-items-center"
+                  >
+                    <img
+                      src={
+                        user.profileImage ||
+                        "/assets/images/users/default-avatar.jpg"
+                      }
+                      alt={user.name}
+                      className="rounded-circle me-2"
+                      style={{
+                        width: "30px",
+                        height: "30px",
+                        objectFit: "cover",
+                      }}
+                    />
+                    {user.name}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item as={Link} to="/profile">
+                      <i className="bi bi-person me-2"></i>
+                      Mi Perfil
+                    </Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item onClick={logout}>
+                      <i className="bi bi-box-arrow-right me-2"></i>
+                      Cerrar Sesión
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </>
             ) : (
               <>
@@ -103,7 +130,7 @@ const Header = () => {
                   className="d-flex align-items-center"
                 >
                   <i className="bi bi-box-arrow-in-right me-1"></i>
-                  Iniciar sesión
+                  Iniciar Sesión
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
@@ -113,6 +140,16 @@ const Header = () => {
                   <i className="bi bi-person-plus me-1"></i>
                   Registrarse
                 </Nav.Link>
+                {/* Botón temporal para testing de admin */}
+                <Button
+                  variant="outline-warning"
+                  size="sm"
+                  onClick={loginAsAdmin}
+                  className="ms-2"
+                >
+                  <i className="bi bi-shield-check me-1"></i>
+                  Admin Demo
+                </Button>
               </>
             )}
           </Nav>

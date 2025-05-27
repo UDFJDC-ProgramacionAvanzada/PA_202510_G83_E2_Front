@@ -49,7 +49,7 @@ export const popularCategories = [
     description: "Abogados, contadores y asesores",
     icon: "bi-briefcase",
   },
-]
+];
 
 export const providers = [
   {
@@ -59,12 +59,17 @@ export const providers = [
     category: "Hogar y Reparaciones",
     description:
       "Electricista profesional con más de 10 años de experiencia en instalaciones residenciales y comerciales. Especializado en soluciones de ahorro energético y sistemas de iluminación inteligente.",
-    skills: ["Instalaciones eléctricas", "Reparaciones", "Iluminación", "Domótica"],
+    skills: [
+      "Instalaciones eléctricas",
+      "Reparaciones",
+      "Iluminación",
+      "Domótica",
+    ],
     location: "Ciudad de México",
     rating: 4.8,
     reviewCount: 124,
     isAvailable: true,
-    profileImage: "../assets/profiles/profile-1.jpeg",
+    profileImage: "/assets/images/profiles/carlos-rodriguez.jpg",
     phone: "555-123-4567",
     email: "carlos@ejemplo.com",
     website: "https://electricistacarlos.com",
@@ -76,21 +81,21 @@ export const providers = [
     gallery: [
       {
         id: "1-1",
-        url: "/work-1-1.jpg",
+        url: "/assets/images/work/electrical/installation-1.jpg",
         alt: "Instalación eléctrica",
         title: "Instalación residencial",
         description: "Instalación completa en casa de 3 habitaciones",
       },
       {
         id: "1-2",
-        url: "/work-1-2.jpg",
+        url: "/assets/images/work/electrical/panel-1.jpg",
         alt: "Panel eléctrico",
         title: "Renovación de panel",
         description: "Actualización de panel eléctrico antiguo",
       },
       {
         id: "1-3",
-        url: "/work-1-3.jpg",
+        url: "/assets/images/work/electrical/led-lighting.jpg",
         alt: "Iluminación LED",
         title: "Sistema de iluminación LED",
         description: "Instalación de sistema de iluminación eficiente",
@@ -104,12 +109,18 @@ export const providers = [
     category: "Educación y Tutoría",
     description:
       "Profesora de matemáticas con 8 años de experiencia enseñando a estudiantes de secundaria y preparatoria. Enfoque personalizado para cada alumno según sus necesidades de aprendizaje.",
-    skills: ["Álgebra", "Cálculo", "Geometría", "Estadística", "Preparación para exámenes"],
+    skills: [
+      "Álgebra",
+      "Cálculo",
+      "Geometría",
+      "Estadística",
+      "Preparación para exámenes",
+    ],
     location: "Guadalajara",
     rating: 4.9,
     reviewCount: 87,
     isAvailable: true,
-    profileImage: "/profile-2.jpg",
+    profileImage: "/assets/images/profiles/ana-martinez.jpg",
     phone: "555-987-6543",
     email: "ana@ejemplo.com",
     website: "https://tutoriaana.com",
@@ -121,14 +132,14 @@ export const providers = [
     gallery: [
       {
         id: "2-1",
-        url: "/work-2-1.jpg",
+        url: "/assets/images/work/education/math-class.jpg",
         alt: "Clase de matemáticas",
         title: "Sesión de tutoría",
         description: "Clase personalizada de álgebra",
       },
       {
         id: "2-2",
-        url: "/work-2-2.jpg",
+        url: "/assets/images/work/education/study-materials.jpg",
         alt: "Material didáctico",
         title: "Material de estudio",
         description: "Material didáctico personalizado para cada alumno",
@@ -142,12 +153,17 @@ export const providers = [
     category: "Cuidado de Mascotas",
     description:
       "Paseador y cuidador de perros certificado. Ofrezco paseos diarios, cuidado a domicilio y entrenamiento básico. Amante de los animales con experiencia en diferentes razas y tamaños.",
-    skills: ["Paseos", "Cuidado a domicilio", "Entrenamiento básico", "Primeros auxilios para mascotas"],
+    skills: [
+      "Paseos",
+      "Cuidado a domicilio",
+      "Entrenamiento básico",
+      "Primeros auxilios para mascotas",
+    ],
     location: "Monterrey",
     rating: 4.7,
     reviewCount: 56,
     isAvailable: true,
-    profileImage: "/profile-3.jpg",
+    profileImage: "/assets/images/profiles/miguel-sanchez.jpg",
     phone: "555-456-7890",
     email: "miguel@ejemplo.com",
     website: "",
@@ -159,21 +175,22 @@ export const providers = [
     gallery: [
       {
         id: "3-1",
-        url: "/work-3-1.jpg",
+        url: "/assets/images/work/pets/dog-walking.jpg",
         alt: "Paseo de perros",
         title: "Paseo grupal",
         description: "Paseo con varios perros en el parque",
       },
       {
         id: "3-2",
-        url: "/work-3-2.jpg",
+        url: "/assets/images/work/pets/pet-care.jpg",
         alt: "Cuidado de mascota",
         title: "Cuidado a domicilio",
-        description: "Cuidando a un labrador durante las vacaciones de sus dueños",
+        description:
+          "Cuidando a un labrador durante las vacaciones de sus dueños",
       },
       {
         id: "3-3",
-        url: "/work-3-3.jpg",
+        url: "/assets/images/work/pets/training.jpg",
         alt: "Entrenamiento",
         title: "Sesión de entrenamiento",
         description: "Enseñando comandos básicos a un cachorro",
@@ -187,12 +204,18 @@ export const providers = [
     category: "Belleza y Bienestar",
     description:
       "Estilista profesional especializada en cortes modernos, coloración y tratamientos capilares. Experiencia en salones de renombre y atención a domicilio para mayor comodidad del cliente.",
-    skills: ["Cortes", "Coloración", "Peinados", "Tratamientos capilares", "Maquillaje"],
+    skills: [
+      "Cortes",
+      "Coloración",
+      "Peinados",
+      "Tratamientos capilares",
+      "Maquillaje",
+    ],
     location: "Ciudad de México",
     rating: 4.6,
     reviewCount: 93,
     isAvailable: false,
-    profileImage: "/profile-4.jpg",
+    profileImage: "/assets/images/profiles/laura-gomez.jpg",
     phone: "555-789-0123",
     email: "laura@ejemplo.com",
     website: "https://laurastyle.com",
@@ -204,21 +227,21 @@ export const providers = [
     gallery: [
       {
         id: "4-1",
-        url: "/work-4-1.jpg",
+        url: "/assets/images/work/beauty/haircut.jpg",
         alt: "Corte de cabello",
         title: "Corte moderno",
         description: "Corte y estilo para cliente",
       },
       {
         id: "4-2",
-        url: "/work-4-2.jpg",
+        url: "/assets/images/work/beauty/coloring.jpg",
         alt: "Coloración",
         title: "Balayage",
         description: "Técnica de coloración natural",
       },
       {
         id: "4-3",
-        url: "/work-4-3.jpg",
+        url: "/assets/images/work/beauty/styling.jpg",
         alt: "Peinado",
         title: "Peinado para evento",
         description: "Peinado para boda",
@@ -243,7 +266,7 @@ export const providers = [
     rating: 4.5,
     reviewCount: 72,
     isAvailable: true,
-    profileImage: "/profile-5.jpg",
+    profileImage: "/assets/images/profiles/javier-lopez.jpg",
     phone: "555-234-5678",
     email: "javier@ejemplo.com",
     website: "https://techjavier.com",
@@ -255,14 +278,14 @@ export const providers = [
     gallery: [
       {
         id: "5-1",
-        url: "/work-5-1.jpg",
+        url: "/assets/images/work/tech/laptop-repair.jpg",
         alt: "Reparación de laptop",
         title: "Cambio de disco duro",
         description: "Actualización a SSD en laptop antigua",
       },
       {
         id: "5-2",
-        url: "/work-5-2.jpg",
+        url: "/assets/images/work/tech/phone-repair.jpg",
         alt: "Reparación de celular",
         title: "Cambio de pantalla",
         description: "Reemplazo de pantalla rota en smartphone",
@@ -287,7 +310,7 @@ export const providers = [
     rating: 4.9,
     reviewCount: 108,
     isAvailable: true,
-    profileImage: "/profile-6.jpg",
+    profileImage: "/assets/images/profiles/sofia-ramirez.jpg",
     phone: "555-345-6789",
     email: "sofia@ejemplo.com",
     website: "https://sofiafotos.com",
@@ -299,21 +322,21 @@ export const providers = [
     gallery: [
       {
         id: "6-1",
-        url: "/work-6-1.jpg",
+        url: "/assets/images/work/photography/wedding.jpg",
         alt: "Fotografía de boda",
         title: "Boda en jardín",
         description: "Ceremonia al aire libre",
       },
       {
         id: "6-2",
-        url: "/work-6-2.jpg",
+        url: "/assets/images/work/photography/family-portrait.jpg",
         alt: "Retrato familiar",
         title: "Sesión familiar",
         description: "Familia de 5 miembros en parque",
       },
       {
         id: "6-3",
-        url: "/work-6-3.jpg",
+        url: "/assets/images/work/photography/product.jpg",
         alt: "Fotografía de producto",
         title: "Joyería artesanal",
         description: "Sesión para tienda online",
@@ -338,7 +361,7 @@ export const providers = [
     rating: 4.7,
     reviewCount: 89,
     isAvailable: true,
-    profileImage: "/profile-7.jpg",
+    profileImage: "/assets/images/profiles/roberto-torres.jpg",
     phone: "555-456-7890",
     email: "roberto@ejemplo.com",
     website: "",
@@ -350,14 +373,14 @@ export const providers = [
     gallery: [
       {
         id: "7-1",
-        url: "/work-7-1.jpg",
+        url: "/assets/images/work/plumbing/pipe-repair.jpg",
         alt: "Reparación de tubería",
         title: "Reparación de fuga",
         description: "Solución de emergencia para fuga en cocina",
       },
       {
         id: "7-2",
-        url: "/work-7-2.jpg",
+        url: "/assets/images/work/plumbing/bathroom-install.jpg",
         alt: "Instalación de lavabo",
         title: "Renovación de baño",
         description: "Instalación completa de nuevo lavabo",
@@ -371,12 +394,18 @@ export const providers = [
     category: "Servicios Legales",
     description:
       "Abogada especializada en derecho familiar y civil. Ofrezco asesoría legal personalizada, representación en juicios y mediación de conflictos con un enfoque humano y profesional.",
-    skills: ["Derecho familiar", "Derecho civil", "Contratos", "Mediación", "Trámites legales"],
+    skills: [
+      "Derecho familiar",
+      "Derecho civil",
+      "Contratos",
+      "Mediación",
+      "Trámites legales",
+    ],
     location: "Ciudad de México",
     rating: 4.8,
     reviewCount: 64,
     isAvailable: true,
-    profileImage: "/profile-8.jpg",
+    profileImage: "/assets/images/profiles/elena-diaz.jpg",
     phone: "555-567-8901",
     email: "elena@ejemplo.com",
     website: "https://elenalegal.com",
@@ -388,17 +417,19 @@ export const providers = [
     gallery: [
       {
         id: "8-1",
-        url: "/work-8-1.jpg",
+        url: "/assets/images/work/legal/office.jpg",
         alt: "Oficina legal",
         title: "Espacio de trabajo",
         description: "Oficina donde atiendo a mis clientes",
       },
     ],
   },
-]
+];
 
 // Seleccionar algunos proveedores como destacados
-export const featuredProviders = providers.filter((provider) => ["1", "2", "3", "4"].includes(provider.id))
+export const featuredProviders = providers.filter((provider) =>
+  ["1", "2", "3", "4"].includes(provider.id)
+);
 
 export const reviews = [
   {
@@ -406,7 +437,7 @@ export const reviews = [
     providerId: "1",
     userId: "u1",
     userName: "María Fernández",
-    userImage: "/user-1.jpg",
+    userImage: "/assets/images/users/maria-fernandez.jpg",
     rating: 5,
     comment:
       "Excelente trabajo. Carlos fue muy profesional y resolvió el problema eléctrico rápidamente. Definitivamente lo recomendaría.",
@@ -417,9 +448,10 @@ export const reviews = [
     providerId: "1",
     userId: "u2",
     userName: "Juan Pérez",
-    userImage: "/user-2.jpg",
+    userImage: "/assets/images/users/juan-perez.jpg",
     rating: 4,
-    comment: "Buen servicio, aunque llegó un poco tarde. El trabajo quedó muy bien hecho y a un precio razonable.",
+    comment:
+      "Buen servicio, aunque llegó un poco tarde. El trabajo quedó muy bien hecho y a un precio razonable.",
     date: "02/05/2023",
   },
   {
@@ -427,7 +459,7 @@ export const reviews = [
     providerId: "2",
     userId: "u3",
     userName: "Pedro Sánchez",
-    userImage: "/user-3.jpg",
+    userImage: "/assets/images/users/pedro-sanchez.jpg",
     rating: 5,
     comment:
       "Ana es una excelente profesora. Mi hijo ha mejorado muchísimo en matemáticas desde que empezó a tomar clases con ella.",
@@ -438,7 +470,7 @@ export const reviews = [
     providerId: "2",
     userId: "u4",
     userName: "Lucía Gómez",
-    userImage: "/user-4.jpg",
+    userImage: "/assets/images/users/lucia-gomez.jpg",
     rating: 5,
     comment:
       "Increíble método de enseñanza. Ana tiene mucha paciencia y sabe cómo explicar conceptos complejos de forma sencilla.",
@@ -449,9 +481,10 @@ export const reviews = [
     providerId: "3",
     userId: "u5",
     userName: "Carmen Rodríguez",
-    userImage: "/user-5.jpg",
+    userImage: "/assets/images/users/carmen-rodriguez.jpg",
     rating: 4,
-    comment: "Miguel es muy responsable con los paseos. Mi perro regresa feliz y cansado, justo lo que necesitaba.",
+    comment:
+      "Miguel es muy responsable con los paseos. Mi perro regresa feliz y cansado, justo lo que necesitaba.",
     date: "05/05/2023",
   },
   {
@@ -459,7 +492,7 @@ export const reviews = [
     providerId: "4",
     userId: "u6",
     userName: "Daniela Torres",
-    userImage: "/user-6.jpg",
+    userImage: "/assets/images/users/daniela-torres.jpg",
     rating: 5,
     comment:
       "Laura es una artista con las tijeras. Me encantó mi nuevo corte y el color quedó exactamente como quería.",
@@ -470,9 +503,10 @@ export const reviews = [
     providerId: "5",
     userId: "u7",
     userName: "Roberto Méndez",
-    userImage: "/user-7.jpg",
+    userImage: "/assets/images/users/roberto-mendez.jpg",
     rating: 4,
-    comment: "Javier arregló mi laptop que ya daba por perdida. Rápido y a buen precio. Recomendado.",
+    comment:
+      "Javier arregló mi laptop que ya daba por perdida. Rápido y a buen precio. Recomendado.",
     date: "30/03/2023",
   },
   {
@@ -480,10 +514,84 @@ export const reviews = [
     providerId: "6",
     userId: "u8",
     userName: "Ana María López",
-    userImage: "/user-8.jpg",
+    userImage: "/assets/images/users/ana-maria-lopez.jpg",
     rating: 5,
     comment:
       "Las fotos de nuestra boda quedaron espectaculares. Sofía tiene un ojo increíble para capturar momentos especiales.",
     date: "12/04/2023",
   },
-]
+];
+
+// Datos de reportes para el administrador
+export const reports = [
+  {
+    id: "rep1",
+    providerId: "4",
+    providerName: "Laura Gómez",
+    reporterId: "u9",
+    reporterName: "Carlos Mendoza",
+    reason: "fake",
+    reasonText: "Perfil falso",
+    details:
+      "Las fotos del perfil no corresponden a la persona que me atendió. Sospecho que es un perfil falso.",
+    date: "2023-05-15",
+    status: "pending", // pending, reviewed, resolved, dismissed
+    priority: "high",
+  },
+  {
+    id: "rep2",
+    providerId: "7",
+    providerName: "Roberto Torres",
+    reporterId: "u10",
+    reporterName: "Sandra López",
+    reason: "inappropriate",
+    reasonText: "Contenido inapropiado",
+    details:
+      "El proveedor envió mensajes inapropiados después de contactarlo para un servicio.",
+    date: "2023-05-12",
+    status: "reviewed",
+    priority: "high",
+  },
+  {
+    id: "rep3",
+    providerId: "5",
+    providerName: "Javier López",
+    reporterId: "u11",
+    reporterName: "Miguel Ruiz",
+    reason: "incorrect",
+    reasonText: "Información incorrecta",
+    details:
+      "Los precios mostrados en el perfil no coinciden con lo que cobra realmente.",
+    date: "2023-05-10",
+    status: "pending",
+    priority: "medium",
+  },
+  {
+    id: "rep4",
+    providerId: "3",
+    providerName: "Miguel Sánchez",
+    reporterId: "u12",
+    reporterName: "Patricia Vega",
+    reason: "scam",
+    reasonText: "Intento de estafa",
+    details:
+      "Pidió dinero por adelantado y nunca apareció para el servicio contratado.",
+    date: "2023-05-08",
+    status: "resolved",
+    priority: "high",
+  },
+  {
+    id: "rep5",
+    providerId: "1",
+    providerName: "Carlos Rodríguez",
+    reporterId: "u13",
+    reporterName: "Fernando Castro",
+    reason: "other",
+    reasonText: "Otro motivo",
+    details:
+      "No cumplió con los horarios acordados y no respondió a mis mensajes.",
+    date: "2023-05-05",
+    status: "dismissed",
+    priority: "low",
+  },
+];

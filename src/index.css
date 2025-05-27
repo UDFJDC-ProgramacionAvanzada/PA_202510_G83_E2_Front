@@ -74,6 +74,25 @@
   border-color: #dc3545;
 }
 
+.navbar-alamano .btn-outline-light {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-alamano .btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
+.navbar-alamano .dropdown-toggle {
+  color: white !important;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-alamano .dropdown-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
@@ -210,6 +229,7 @@ body {
   text-decoration: underline;
 }
 
+/* Mejoras adicionales */
 .cursor-pointer {
   cursor: pointer;
 }
@@ -226,6 +246,7 @@ body {
   text-decoration: none !important;
 }
 
+/* Cards con tema AlaMano */
 .card-alamano {
   border: 1px solid var(--alamano-light);
   box-shadow: 0 2px 10px rgba(54, 152, 191, 0.1);
@@ -235,11 +256,13 @@ body {
   box-shadow: 0 4px 20px rgba(54, 152, 191, 0.15);
 }
 
+/* Badges personalizados */
 .badge-alamano {
   background-color: var(--alamano-secondary);
   color: white;
 }
 
+/* Formularios */
 .form-control:focus {
   border-color: var(--alamano-primary);
   box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
@@ -250,6 +273,7 @@ body {
   box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
 }
 
+/* Tabs */
 .nav-tabs .nav-link.active {
   color: var(--alamano-primary);
   border-bottom-color: var(--alamano-primary);
@@ -259,12 +283,14 @@ body {
   color: var(--alamano-primary);
 }
 
+/* Alertas personalizadas */
 .alert-alamano {
   background-color: var(--alamano-light);
   border-color: var(--alamano-secondary);
   color: var(--alamano-dark);
 }
 
+/* Botones secundarios */
 .btn-alamano-secondary {
   background-color: var(--alamano-secondary);
   border-color: var(--alamano-secondary);
@@ -277,6 +303,7 @@ body {
   color: white;
 }
 
+/* Elementos de acento */
 .accent-alamano {
   color: var(--alamano-secondary);
 }
@@ -285,10 +312,12 @@ body {
   background-color: var(--alamano-light);
 }
 
+/* Separadores */
 .separator-alamano {
   border-color: var(--alamano-light);
 }
 
+/* Dashboard específico */
 .dashboard-card {
   border-left: 4px solid var(--alamano-primary);
 }
@@ -298,6 +327,7 @@ body {
   border: 1px solid var(--alamano-secondary);
 }
 
+/* Animaciones suaves */
 .fade-in {
   animation: fadeIn 0.5s ease-in;
 }
@@ -314,3 +344,21 @@ body {
   }
 }
 
+/* Estilos específicos para admin */
+.admin-badge {
+  background: linear-gradient(45deg, var(--alamano-primary), var(--alamano-secondary));
+  color: white;
+  border: none;
+}
+
+.priority-high {
+  border-left: 4px solid #dc3545;
+}
+
+.priority-medium {
+  border-left: 4px solid #ffc107;
+}
+
+.priority-low {
+  border-left: 4px solid #17a2b8;
+}
