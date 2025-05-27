@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Form, Button, Row, Col, Collapse } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react";
+import { Form, Button, Row, Col, Collapse } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = ({ className, showAdvanced = false }) => {
-  const [query, setQuery] = useState("")
-  const [category, setCategory] = useState("")
-  const [location, setLocation] = useState("")
-  const [showFilters, setShowFilters] = useState(showAdvanced)
-  const navigate = useNavigate()
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState("");
+  const [location, setLocation] = useState("");
+  const [showFilters, setShowFilters] = useState(showAdvanced);
+  const navigate = useNavigate();
 
   const categories = [
     { id: "hogar", name: "Hogar y Reparaciones" },
@@ -20,18 +20,18 @@ const SearchBar = ({ className, showAdvanced = false }) => {
     { id: "transporte", name: "Transporte" },
     { id: "eventos", name: "Eventos" },
     { id: "legal", name: "Servicios Legales" },
-  ]
+  ];
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const params = new URLSearchParams()
+    e.preventDefault();
+    const params = new URLSearchParams();
 
-    if (query) params.append("q", query)
-    if (category) params.append("category", category)
-    if (location) params.append("location", location)
+    if (query) params.append("q", query);
+    if (category) params.append("category", category);
+    if (location) params.append("location", location);
 
-    navigate(`/search?${params.toString()}`)
-  }
+    navigate(`/search?${params.toString()}`);
+  };
 
   return (
     <div className={className}>
@@ -55,7 +55,12 @@ const SearchBar = ({ className, showAdvanced = false }) => {
         </Row>
 
         <div className="mt-2">
-          <Button variant="link" onClick={() => setShowFilters(!showFilters)} className="p-0 text-decoration-none">
+          <Button
+            variant="link"
+            onClick={() => setShowFilters(!showFilters)}
+            className="p-0 text-decoration-none"
+            style={{ color: "#F2F2F2" }}
+          >
             {showFilters ? "Ocultar filtros" : "Mostrar filtros avanzados"}
           </Button>
         </div>
@@ -64,7 +69,10 @@ const SearchBar = ({ className, showAdvanced = false }) => {
           <div>
             <Row className="mt-3 g-2">
               <Col xs={12} md={6}>
-                <Form.Select value={category} onChange={(e) => setCategory(e.target.value)}>
+                <Form.Select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                >
                   <option value="">Todas las categorías</option>
                   {categories.map((cat) => (
                     <option key={cat.id} value={cat.id}>
@@ -91,7 +99,7 @@ const SearchBar = ({ className, showAdvanced = false }) => {
         </Collapse>
       </Form>
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;
