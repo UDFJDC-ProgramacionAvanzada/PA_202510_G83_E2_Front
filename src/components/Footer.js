@@ -8,10 +8,9 @@ const Footer = () => {
         <Row>
           <Col md={4} className="mb-4">
             <h5 className="d-flex align-items-center">
-              <i className="bi bi-hand-thumbs-up me-2"></i>
-              AlaMano
+              <i className="bi bi-hand-thumbs-up me-2 pe-2">AlaMano</i>
             </h5>
-            <p className="text-muted">
+            <p className="text-muted" style={{ color: "#F2F2F2 !important" }}>
               Conectando personas con los mejores proveedores de servicios
               locales. Tu solución está al alcance de tu mano.
             </p>
@@ -60,16 +59,13 @@ const Footer = () => {
             <h6>Contacto</h6>
             <ul className="list-unstyled text-muted">
               <li className="mb-2">
-                <i className="bi bi-envelope me-2"></i>
-                info@alamano.com
+                <i className="bi bi-envelope me-2 pe-2">info@alamano.com</i>
               </li>
               <li className="mb-2">
-                <i className="bi bi-telephone me-2"></i>
-                (123) 456-7890
+                <i className="bi bi-telephone me-2 pe-2">(123) 456-7890</i>
               </li>
               <li className="mb-2">
-                <i className="bi bi-geo-alt me-2"></i>
-                Calle Principal 123
+                <i className="bi bi-geo-alt me-2 pe-2">Calle Principal 123</i>
               </li>
             </ul>
           </Col>

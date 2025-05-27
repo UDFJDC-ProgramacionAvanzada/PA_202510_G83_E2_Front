@@ -367,6 +367,10 @@ body {
   color: var(--alamano-secondary);
 }
 
+.footer-alamano .text-muted {
+  color: #F2F2F2 !important;
+}
+
 /* Cards con tema AlaMano */
 .card-alamano {
   border: 1px solid var(--alamano-light);
