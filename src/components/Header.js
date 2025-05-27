@@ -103,7 +103,7 @@ const Header = () => {
                   className="d-flex align-items-center"
                 >
                   <i className="bi bi-box-arrow-in-right me-1"></i>
-                  Iniciar Sesión
+                  Iniciar sesión
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
