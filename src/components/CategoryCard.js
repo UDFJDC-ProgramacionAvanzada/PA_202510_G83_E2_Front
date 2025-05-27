@@ -1,0 +1,21 @@
+import { Card } from "react-bootstrap"
+import { Link } from "react-router-dom"
+
+
+const CategoryCard = ({ category }) => {
+  return (
+    <Link to={`/search?category=${category.id}`} className="text-decoration-none">
+      <Card className="h-100 category-card text-center">
+        <div className="py-4">
+          <i className={`bi ${category.icon} fs-1 text-primary`}></i>
+        </div>
+        <Card.Body>
+          <Card.Title>{category.name}</Card.Title>
+          <Card.Text className="text-muted small">{category.description}</Card.Text>
+        </Card.Body>
+      </Card>
+    </Link>
+  )
+}
+
+export default CategoryCard
