@@ -8,6 +8,7 @@
   --alamano-dark: #0d0d0d;
   --alamano-primary-hover: #2a7a9f;
   --alamano-secondary-hover: #2a8a9f;
+  --alamano-light-hover: #a0d9e8;
 }
 
 /* Sobrescribir colores primarios de Bootstrap */
@@ -16,9 +17,12 @@
   border-color: var(--alamano-primary);
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
   background-color: var(--alamano-primary-hover);
   border-color: var(--alamano-primary-hover);
+  box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
 }
 
 .btn-outline-primary {
@@ -26,23 +30,127 @@
   border-color: var(--alamano-primary);
 }
 
-.btn-outline-primary:hover {
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
   background-color: var(--alamano-primary);
   border-color: var(--alamano-primary);
+  color: white;
 }
 
+/* Botones secundarios */
+.btn-secondary {
+  background-color: var(--alamano-secondary);
+  border-color: var(--alamano-secondary);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+  background-color: var(--alamano-secondary-hover);
+  border-color: var(--alamano-secondary-hover);
+}
+
+.btn-outline-secondary {
+  color: var(--alamano-secondary);
+  border-color: var(--alamano-secondary);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus,
+.btn-outline-secondary:active {
+  background-color: var(--alamano-secondary);
+  border-color: var(--alamano-secondary);
+  color: white;
+}
+
+/* Botones de información */
+.btn-info {
+  background-color: var(--alamano-light);
+  border-color: var(--alamano-light);
+  color: var(--alamano-dark);
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active {
+  background-color: var(--alamano-light-hover);
+  border-color: var(--alamano-light-hover);
+  color: var(--alamano-dark);
+}
+
+.btn-outline-info {
+  color: var(--alamano-secondary);
+  border-color: var(--alamano-secondary);
+}
+
+.btn-outline-info:hover,
+.btn-outline-info:focus,
+.btn-outline-info:active {
+  background-color: var(--alamano-secondary);
+  border-color: var(--alamano-secondary);
+  color: white;
+}
+
+/* Colores de texto y fondo */
 .text-primary {
   color: var(--alamano-primary) !important;
+}
+
+.text-secondary {
+  color: var(--alamano-secondary) !important;
 }
 
 .bg-primary {
   background-color: var(--alamano-primary) !important;
 }
 
+.bg-secondary {
+  background-color: var(--alamano-secondary) !important;
+}
+
+.bg-info {
+  background-color: var(--alamano-light) !important;
+  color: var(--alamano-dark) !important;
+}
+
+/* Badges personalizados */
+.badge.bg-primary {
+  background-color: var(--alamano-primary) !important;
+}
+
+.badge.bg-secondary {
+  background-color: var(--alamano-secondary) !important;
+}
+
+.badge.bg-info {
+  background-color: var(--alamano-light) !important;
+  color: var(--alamano-dark) !important;
+}
+
+/* Alertas personalizadas */
+.alert-primary {
+  background-color: rgba(54, 152, 191, 0.1);
+  border-color: var(--alamano-primary);
+  color: var(--alamano-primary);
+}
+
+.alert-secondary {
+  background-color: rgba(54, 166, 191, 0.1);
+  border-color: var(--alamano-secondary);
+  color: var(--alamano-secondary);
+}
+
+.alert-info {
+  background-color: rgba(182, 231, 242, 0.3);
+  border-color: var(--alamano-light);
+  color: var(--alamano-dark);
+}
+
 /* Navbar personalizado */
 .navbar-alamano {
-  background-color: var(--alamano-primary) !important;
-  box-shadow: 0 2px 4px rgba(54, 152, 191, 0.1);
+  background: linear-gradient(135deg, var(--alamano-primary) 0%, var(--alamano-secondary) 100%) !important;
+  box-shadow: 0 2px 4px rgba(54, 152, 191, 0.2);
 }
 
 .navbar-alamano .navbar-brand {
@@ -53,25 +161,11 @@
 
 .navbar-alamano .nav-link {
   color: rgba(255, 255, 255, 0.9) !important;
+  transition: color 0.3s ease;
 }
 
 .navbar-alamano .nav-link:hover {
   color: white !important;
-}
-
-.navbar-alamano .btn-outline-primary {
-  color: white;
-  border-color: white;
-}
-
-.navbar-alamano .btn-outline-primary:hover {
-  background-color: white;
-  color: var(--alamano-primary);
-}
-
-.navbar-alamano .btn-outline-danger {
-  color: white;
-  border-color: #dc3545;
 }
 
 .navbar-alamano .btn-outline-light {
@@ -82,6 +176,29 @@
 .navbar-alamano .btn-outline-light:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: white;
+  color: white;
+}
+
+.navbar-alamano .btn-outline-danger {
+  color: white;
+  border-color: rgba(220, 53, 69, 0.7);
+}
+
+.navbar-alamano .btn-outline-danger:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+.navbar-alamano .btn-outline-warning {
+  color: white;
+  border-color: rgba(255, 193, 7, 0.7);
+}
+
+.navbar-alamano .btn-outline-warning:hover {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: var(--alamano-dark);
 }
 
 .navbar-alamano .dropdown-toggle {
@@ -89,8 +206,10 @@
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-.navbar-alamano .dropdown-toggle:hover {
+.navbar-alamano .dropdown-toggle:hover,
+.navbar-alamano .dropdown-toggle:focus {
   background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
 }
 
 body {
@@ -99,6 +218,7 @@ body {
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--alamano-dark);
 }
 
 .hero-section {
@@ -128,13 +248,14 @@ body {
 .category-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  border: 1px solid rgba(54, 152, 191, 0.1);
+  border: 1px solid rgba(54, 152, 191, 0.2);
+  background: white;
 }
 
 .category-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(54, 152, 191, 0.15);
-  border-color: var(--alamano-light);
+  box-shadow: 0 8px 25px rgba(54, 152, 191, 0.2);
+  border-color: var(--alamano-primary);
 }
 
 .category-card .text-primary {
@@ -144,12 +265,14 @@ body {
 .provider-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  border: 1px solid rgba(54, 152, 191, 0.1);
+  border: 1px solid rgba(54, 152, 191, 0.2);
+  background: white;
 }
 
 .provider-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(54, 152, 191, 0.15);
+  box-shadow: 0 8px 25px rgba(54, 152, 191, 0.2);
+  border-color: var(--alamano-primary);
 }
 
 .star-rating {
@@ -160,6 +283,11 @@ body {
   cursor: pointer;
   transition: color 0.3s ease;
   font-size: 1.2rem;
+  color: var(--alamano-secondary);
+}
+
+.favorite-icon:hover {
+  color: var(--alamano-primary);
 }
 
 .favorite-icon.active {
@@ -188,13 +316,13 @@ body {
   border-radius: 8px;
   margin-bottom: 15px;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  border: 2px solid transparent;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  border: 2px solid var(--alamano-light);
 }
 
 .gallery-image:hover {
   transform: scale(1.05);
-  border-color: var(--alamano-light);
+  border-color: var(--alamano-primary);
 }
 
 .availability-badge {
@@ -204,12 +332,12 @@ body {
 }
 
 .availability-badge.available {
-  background-color: #28a745;
+  background-color: var(--alamano-secondary);
   color: white;
 }
 
 .availability-badge.unavailable {
-  background-color: #dc3545;
+  background-color: var(--alamano-dark);
   color: white;
 }
 
@@ -222,10 +350,176 @@ body {
 .footer-alamano a {
   color: var(--alamano-light);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .footer-alamano a:hover {
   color: white;
+  text-decoration: underline;
+}
+
+.footer-alamano .bi {
+  color: var(--alamano-light);
+  transition: color 0.3s ease;
+}
+
+.footer-alamano .bi:hover {
+  color: var(--alamano-secondary);
+}
+
+/* Cards con tema AlaMano */
+.card-alamano {
+  border: 1px solid var(--alamano-light);
+  box-shadow: 0 2px 10px rgba(54, 152, 191, 0.1);
+  background: white;
+}
+
+.card-alamano:hover {
+  box-shadow: 0 4px 20px rgba(54, 152, 191, 0.15);
+  border-color: var(--alamano-secondary);
+}
+
+.card-alamano .card-header {
+  background-color: var(--alamano-light);
+  border-bottom-color: var(--alamano-secondary);
+  color: var(--alamano-dark);
+}
+
+/* Formularios */
+.form-control:focus {
+  border-color: var(--alamano-primary);
+  box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
+}
+
+.form-select:focus {
+  border-color: var(--alamano-primary);
+  box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
+}
+
+.form-check-input:checked {
+  background-color: var(--alamano-primary);
+  border-color: var(--alamano-primary);
+}
+
+.form-check-input:focus {
+  border-color: var(--alamano-primary);
+  box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
+}
+
+/* Tabs */
+.nav-tabs .nav-link {
+  color: var(--alamano-secondary);
+  border-color: transparent;
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--alamano-primary);
+  border-color: var(--alamano-light);
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--alamano-primary);
+  background-color: white;
+  border-color: var(--alamano-primary) var(--alamano-primary) white;
+}
+
+/* Elementos de acento */
+.accent-alamano {
+  color: var(--alamano-primary) !important;
+}
+
+.accent-secondary-alamano {
+  color: var(--alamano-secondary) !important;
+}
+
+.bg-light-alamano {
+  background-color: var(--alamano-light) !important;
+  color: var(--alamano-dark) !important;
+}
+
+/* Separadores */
+.separator-alamano {
+  border-color: var(--alamano-light) !important;
+}
+
+/* Dashboard específico */
+.dashboard-card {
+  border-left: 4px solid var(--alamano-primary);
+  background: white;
+}
+
+.stats-card {
+  background: linear-gradient(135deg, var(--alamano-light) 0%, rgba(182, 231, 242, 0.5) 100%);
+  border: 1px solid var(--alamano-secondary);
+  color: var(--alamano-dark);
+}
+
+.stats-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(54, 152, 191, 0.2);
+}
+
+/* Tablas */
+.table-hover tbody tr:hover {
+  background-color: rgba(182, 231, 242, 0.1);
+}
+
+.table thead th {
+  background-color: var(--alamano-light);
+  color: var(--alamano-dark);
+  border-bottom-color: var(--alamano-secondary);
+}
+
+/* Modales */
+.modal-header {
+  background-color: var(--alamano-light);
+  border-bottom-color: var(--alamano-secondary);
+}
+
+.modal-title {
+  color: var(--alamano-dark);
+}
+
+/* Paginación */
+.page-link {
+  color: var(--alamano-primary);
+}
+
+.page-link:hover {
+  color: var(--alamano-primary-hover);
+  background-color: var(--alamano-light);
+  border-color: var(--alamano-secondary);
+}
+
+.page-item.active .page-link {
+  background-color: var(--alamano-primary);
+  border-color: var(--alamano-primary);
+}
+
+/* Dropdowns */
+.dropdown-menu {
+  border-color: var(--alamano-light);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: var(--alamano-light);
+  color: var(--alamano-dark);
+}
+
+/* Progress bars */
+.progress-bar {
+  background-color: var(--alamano-primary);
+}
+
+/* Links */
+a {
+  color: var(--alamano-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--alamano-primary-hover);
   text-decoration: underline;
 }
 
@@ -244,87 +538,6 @@ body {
 
 .text-decoration-none:hover {
   text-decoration: none !important;
-}
-
-/* Cards con tema AlaMano */
-.card-alamano {
-  border: 1px solid var(--alamano-light);
-  box-shadow: 0 2px 10px rgba(54, 152, 191, 0.1);
-}
-
-.card-alamano:hover {
-  box-shadow: 0 4px 20px rgba(54, 152, 191, 0.15);
-}
-
-/* Badges personalizados */
-.badge-alamano {
-  background-color: var(--alamano-secondary);
-  color: white;
-}
-
-/* Formularios */
-.form-control:focus {
-  border-color: var(--alamano-primary);
-  box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
-}
-
-.form-select:focus {
-  border-color: var(--alamano-primary);
-  box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
-}
-
-/* Tabs */
-.nav-tabs .nav-link.active {
-  color: var(--alamano-primary);
-  border-bottom-color: var(--alamano-primary);
-}
-
-.nav-tabs .nav-link:hover {
-  color: var(--alamano-primary);
-}
-
-/* Alertas personalizadas */
-.alert-alamano {
-  background-color: var(--alamano-light);
-  border-color: var(--alamano-secondary);
-  color: var(--alamano-dark);
-}
-
-/* Botones secundarios */
-.btn-alamano-secondary {
-  background-color: var(--alamano-secondary);
-  border-color: var(--alamano-secondary);
-  color: white;
-}
-
-.btn-alamano-secondary:hover {
-  background-color: var(--alamano-secondary-hover);
-  border-color: var(--alamano-secondary-hover);
-  color: white;
-}
-
-/* Elementos de acento */
-.accent-alamano {
-  color: var(--alamano-secondary);
-}
-
-.bg-light-alamano {
-  background-color: var(--alamano-light);
-}
-
-/* Separadores */
-.separator-alamano {
-  border-color: var(--alamano-light);
-}
-
-/* Dashboard específico */
-.dashboard-card {
-  border-left: 4px solid var(--alamano-primary);
-}
-
-.stats-card {
-  background: linear-gradient(135deg, var(--alamano-light) 0%, rgba(182, 231, 242, 0.5) 100%);
-  border: 1px solid var(--alamano-secondary);
 }
 
 /* Animaciones suaves */
@@ -356,9 +569,68 @@ body {
 }
 
 .priority-medium {
-  border-left: 4px solid #ffc107;
+  border-left: 4px solid var(--alamano-secondary);
 }
 
 .priority-low {
-  border-left: 4px solid #17a2b8;
+  border-left: 4px solid var(--alamano-light);
+}
+
+/* Estados de reportes con colores de la paleta */
+.status-pending {
+  background-color: rgba(54, 166, 191, 0.1);
+  color: var(--alamano-secondary);
+  border: 1px solid var(--alamano-secondary);
+}
+
+.status-reviewed {
+  background-color: rgba(182, 231, 242, 0.3);
+  color: var(--alamano-dark);
+  border: 1px solid var(--alamano-light);
+}
+
+.status-resolved {
+  background-color: rgba(54, 152, 191, 0.1);
+  color: var(--alamano-primary);
+  border: 1px solid var(--alamano-primary);
+}
+
+.status-dismissed {
+  background-color: rgba(13, 13, 13, 0.1);
+  color: var(--alamano-dark);
+  border: 1px solid var(--alamano-dark);
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--alamano-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--alamano-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--alamano-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 0;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .stats-card {
+    margin-bottom: 1rem;
+  }
 }

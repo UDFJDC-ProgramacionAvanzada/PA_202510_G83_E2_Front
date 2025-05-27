@@ -10,14 +10,17 @@ const ProviderCard = ({ provider }) => {
 
   return (
     <Card className="h-100 provider-card card-alamano">
-      <Card.Header className="d-flex justify-content-between align-items-center bg-light-alamano border-bottom-0">
-        <Badge bg={provider.isAvailable ? "success" : "danger"}>
+      <Card.Header className="d-flex justify-content-between align-items-center bg-light-alamano border-0">
+        <Badge
+          bg={provider.isAvailable ? "secondary" : "dark"}
+          className="availability-badge"
+        >
           {provider.isAvailable ? "Disponible" : "No disponible"}
         </Badge>
         <i
           className={`bi ${
-            isFavorite ? "bi-heart-fill text-danger" : "bi-heart"
-          } favorite-icon`}
+            isFavorite ? "bi-heart-fill" : "bi-heart"
+          } favorite-icon ${isFavorite ? "active" : ""}`}
           onClick={(e) => {
             e.preventDefault();
             toggleFavorite(provider.id);
@@ -26,7 +29,9 @@ const ProviderCard = ({ provider }) => {
       </Card.Header>
       <div className="text-center pt-3">
         <img
-          src={provider.profileImage || "/placeholder.svg"}
+          src={
+            provider.profileImage || "/assets/images/users/default-avatar.jpg"
+          }
           alt={provider.name}
           className="rounded-circle"
           style={{
@@ -49,7 +54,7 @@ const ProviderCard = ({ provider }) => {
           {provider.category}
         </Card.Text>
         <Card.Text className="small mb-3">
-          <i className="bi bi-geo-alt me-1 accent-alamano"></i>
+          <i className="bi bi-geo-alt me-1 accent-secondary-alamano"></i>
           {provider.location}
         </Card.Text>
         <Link to={`/provider/${provider.id}`}>

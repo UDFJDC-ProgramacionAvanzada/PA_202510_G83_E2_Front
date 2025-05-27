@@ -85,18 +85,36 @@ const AdminDashboardPage = () => {
 
   const getStatusBadge = (status) => {
     const statusConfig = {
-      pending: { bg: "warning", text: "Pendiente" },
-      reviewed: { bg: "info", text: "Revisado" },
-      resolved: { bg: "success", text: "Resuelto" },
-      dismissed: { bg: "secondary", text: "Desestimado" },
+      pending: {
+        bg: "secondary",
+        text: "Pendiente",
+        className: "status-pending",
+      },
+      reviewed: { bg: "info", text: "Revisado", className: "status-reviewed" },
+      resolved: {
+        bg: "primary",
+        text: "Resuelto",
+        className: "status-resolved",
+      },
+      dismissed: {
+        bg: "dark",
+        text: "Desestimado",
+        className: "status-dismissed",
+      },
     };
-    return statusConfig[status] || { bg: "secondary", text: "Desconocido" };
+    return (
+      statusConfig[status] || {
+        bg: "secondary",
+        text: "Desconocido",
+        className: "",
+      }
+    );
   };
 
   const getPriorityBadge = (priority) => {
     const priorityConfig = {
       high: { bg: "danger", text: "Alta" },
-      medium: { bg: "warning", text: "Media" },
+      medium: { bg: "secondary", text: "Media" },
       low: { bg: "info", text: "Baja" },
     };
     return priorityConfig[priority] || { bg: "secondary", text: "Normal" };
@@ -106,7 +124,7 @@ const AdminDashboardPage = () => {
     return (
       <Container className="py-5 text-center">
         <Alert variant="danger">
-          <i className="bi bi-shield-exclamation fs-1 d-block mb-3"></i>
+          <i className="bi bi-shield-exclamation fs-1 d-block mb-3 text-danger"></i>
           <h4>Acceso Denegado</h4>
           <p>No tienes permisos para acceder al panel de administración.</p>
         </Alert>
@@ -132,7 +150,7 @@ const AdminDashboardPage = () => {
           <Card className="stats-card h-100">
             <Card.Body className="text-center">
               <i className="bi bi-flag fs-1 accent-alamano"></i>
-              <h3 className="mt-2">{stats.totalReports}</h3>
+              <h3 className="mt-2 accent-alamano">{stats.totalReports}</h3>
               <p className="text-muted mb-0">Total Reportes</p>
             </Card.Body>
           </Card>
@@ -140,8 +158,10 @@ const AdminDashboardPage = () => {
         <Col md={3} className="mb-3">
           <Card className="stats-card h-100">
             <Card.Body className="text-center">
-              <i className="bi bi-clock fs-1 text-warning"></i>
-              <h3 className="mt-2">{stats.pendingReports}</h3>
+              <i className="bi bi-clock fs-1 accent-secondary-alamano"></i>
+              <h3 className="mt-2 accent-secondary-alamano">
+                {stats.pendingReports}
+              </h3>
               <p className="text-muted mb-0">Pendientes</p>
             </Card.Body>
           </Card>
@@ -149,8 +169,8 @@ const AdminDashboardPage = () => {
         <Col md={3} className="mb-3">
           <Card className="stats-card h-100">
             <Card.Body className="text-center">
-              <i className="bi bi-check-circle fs-1 text-success"></i>
-              <h3 className="mt-2">{stats.resolvedReports}</h3>
+              <i className="bi bi-check-circle fs-1 accent-alamano"></i>
+              <h3 className="mt-2 accent-alamano">{stats.resolvedReports}</h3>
               <p className="text-muted mb-0">Resueltos</p>
             </Card.Body>
           </Card>
@@ -159,7 +179,7 @@ const AdminDashboardPage = () => {
           <Card className="stats-card h-100">
             <Card.Body className="text-center">
               <i className="bi bi-people fs-1 accent-alamano"></i>
-              <h3 className="mt-2">{stats.activeProviders}</h3>
+              <h3 className="mt-2 accent-alamano">{stats.activeProviders}</h3>
               <p className="text-muted mb-0">Proveedores Activos</p>
             </Card.Body>
           </Card>
@@ -169,14 +189,14 @@ const AdminDashboardPage = () => {
       <Tabs defaultActiveKey="reports" className="mb-4">
         <Tab eventKey="reports" title={`Reportes (${stats.totalReports})`}>
           <Card className="card-alamano">
-            <Card.Header>
+            <Card.Header className="bg-light-alamano">
               <h4 className="mb-0">
                 <i className="bi bi-flag me-2"></i>
                 Gestión de Reportes
               </h4>
             </Card.Header>
             <Card.Body>
-              <Table responsive hover>
+              <Table responsive hover className="table-hover">
                 <thead>
                   <tr>
                     <th>Fecha</th>
@@ -197,7 +217,9 @@ const AdminDashboardPage = () => {
                       <tr key={report.id}>
                         <td>{new Date(report.date).toLocaleDateString()}</td>
                         <td>
-                          <strong>{report.providerName}</strong>
+                          <strong className="accent-alamano">
+                            {report.providerName}
+                          </strong>
                         </td>
                         <td>{report.reporterName}</td>
                         <td>{report.reasonText}</td>
@@ -207,7 +229,12 @@ const AdminDashboardPage = () => {
                           </Badge>
                         </td>
                         <td>
-                          <Badge bg={statusBadge.bg}>{statusBadge.text}</Badge>
+                          <Badge
+                            bg={statusBadge.bg}
+                            className={statusBadge.className}
+                          >
+                            {statusBadge.text}
+                          </Badge>
                         </td>
                         <td>
                           <Button
@@ -240,14 +267,14 @@ const AdminDashboardPage = () => {
           title={`Proveedores (${stats.totalProviders})`}
         >
           <Card className="card-alamano">
-            <Card.Header>
+            <Card.Header className="bg-light-alamano">
               <h4 className="mb-0">
                 <i className="bi bi-people me-2"></i>
                 Gestión de Proveedores
               </h4>
             </Card.Header>
             <Card.Body>
-              <Table responsive hover>
+              <Table responsive hover className="table-hover">
                 <thead>
                   <tr>
                     <th>Proveedor</th>
@@ -274,9 +301,12 @@ const AdminDashboardPage = () => {
                               width: "40px",
                               height: "40px",
                               objectFit: "cover",
+                              border: "2px solid var(--alamano-light)",
                             }}
                           />
-                          <strong>{provider.name}</strong>
+                          <strong className="accent-alamano">
+                            {provider.name}
+                          </strong>
                         </div>
                       </td>
                       <td>{provider.category}</td>
@@ -284,11 +314,16 @@ const AdminDashboardPage = () => {
                       <td>
                         <div className="d-flex align-items-center">
                           <i className="bi bi-star-fill text-warning me-1"></i>
-                          {provider.rating.toFixed(1)} ({provider.reviewCount})
+                          <span className="accent-alamano">
+                            {provider.rating.toFixed(1)}
+                          </span>
+                          <span className="text-muted ms-1">
+                            ({provider.reviewCount})
+                          </span>
                         </div>
                       </td>
                       <td>
-                        <Badge bg={provider.isAvailable ? "success" : "danger"}>
+                        <Badge bg={provider.isAvailable ? "secondary" : "dark"}>
                           {provider.isAvailable ? "Activo" : "Inactivo"}
                         </Badge>
                       </td>
@@ -301,7 +336,7 @@ const AdminDashboardPage = () => {
                           <i className="bi bi-eye me-1"></i>
                           Ver
                         </Button>
-                        <Button variant="outline-warning" size="sm">
+                        <Button variant="outline-secondary" size="sm">
                           <i className="bi bi-pencil me-1"></i>
                           Editar
                         </Button>
@@ -321,9 +356,9 @@ const AdminDashboardPage = () => {
         onHide={() => setShowReportModal(false)}
         size="lg"
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className="bg-light-alamano">
           <Modal.Title>
-            <i className="bi bi-flag me-2"></i>
+            <i className="bi bi-flag me-2 accent-alamano"></i>
             Detalles del Reporte
           </Modal.Title>
         </Modal.Header>
@@ -336,14 +371,17 @@ const AdminDashboardPage = () => {
                   {new Date(selectedReport.date).toLocaleDateString()}
                 </Col>
                 <Col md={6}>
-                  <strong>ID del Reporte:</strong> {selectedReport.id}
+                  <strong>ID del Reporte:</strong>{" "}
+                  <span className="accent-alamano">{selectedReport.id}</span>
                 </Col>
               </Row>
 
               <Row className="mb-3">
                 <Col md={6}>
                   <strong>Proveedor Reportado:</strong>{" "}
-                  {selectedReport.providerName}
+                  <span className="accent-alamano">
+                    {selectedReport.providerName}
+                  </span>
                 </Col>
                 <Col md={6}>
                   <strong>Reportado por:</strong> {selectedReport.reporterName}
@@ -367,7 +405,7 @@ const AdminDashboardPage = () => {
 
               <div className="mb-3">
                 <strong>Detalles:</strong>
-                <p className="mt-2 p-3 bg-light rounded">
+                <p className="mt-2 p-3 bg-light-alamano rounded">
                   {selectedReport.details}
                 </p>
               </div>
@@ -397,7 +435,7 @@ const AdminDashboardPage = () => {
               Marcar como Revisado
             </Button>
             <Button
-              variant="success"
+              variant="primary"
               onClick={() =>
                 handleUpdateReportStatus(selectedReport.id, "resolved")
               }
