@@ -12,7 +12,7 @@ const ProviderCard = ({ provider }) => {
     <Card className="h-100 provider-card card-alamano">
       <Card.Header className="d-flex justify-content-between align-items-center bg-light-alamano border-0">
         <Badge
-          bg={provider.isAvailable ? "secondary" : "dark"}
+          bg={provider.isAvailable ? "success" : "dark"}
           className="availability-badge"
         >
           {provider.isAvailable ? "Disponible" : "No disponible"}

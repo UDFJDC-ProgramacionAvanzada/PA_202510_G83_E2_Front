@@ -92,12 +92,82 @@
   color: white;
 }
 
+/* Botones de éxito */
+.btn-success {
+  background-color: var(--alamano-secondary);
+  border-color: var(--alamano-secondary);
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+  background-color: var(--alamano-secondary-hover);
+  border-color: var(--alamano-secondary-hover);
+}
+
+.btn-outline-success {
+  color: var(--alamano-secondary);
+  border-color: var(--alamano-secondary);
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:focus,
+.btn-outline-success:active {
+  background-color: var(--alamano-secondary);
+  border-color: var(--alamano-secondary);
+  color: white;
+}
+
+/* Botones de advertencia */
+.btn-warning {
+  background-color: var(--alamano-light);
+  border-color: var(--alamano-light);
+  color: var(--alamano-dark);
+}
+
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active {
+  background-color: var(--alamano-light-hover);
+  border-color: var(--alamano-light-hover);
+  color: var(--alamano-dark);
+}
+
+.btn-outline-warning {
+  color: var(--alamano-secondary);
+  border-color: var(--alamano-secondary);
+}
+
+.btn-outline-warning:hover,
+.btn-outline-warning:focus,
+.btn-outline-warning:active {
+  background-color: var(--alamano-secondary);
+  border-color: var(--alamano-secondary);
+  color: white;
+}
+
 /* Colores de texto y fondo */
 .text-primary {
   color: var(--alamano-primary) !important;
 }
 
 .text-secondary {
+  color: var(--alamano-secondary) !important;
+}
+
+.text-success {
+  color: var(--alamano-secondary) !important;
+}
+
+.text-warning {
+  color: var(--alamano-dark) !important;
+}
+
+.text-danger {
+  color: var(--alamano-dark) !important;
+}
+
+.text-info {
   color: var(--alamano-secondary) !important;
 }
 
@@ -114,6 +184,21 @@
   color: var(--alamano-dark) !important;
 }
 
+.bg-success {
+  background-color: var(--alamano-secondary) !important;
+  color: white !important;
+}
+
+.bg-warning {
+  background-color: var(--alamano-light) !important;
+  color: var(--alamano-dark) !important;
+}
+
+.bg-danger {
+  background-color: var(--alamano-dark) !important;
+  color: white !important;
+}
+
 /* Badges personalizados */
 .badge.bg-primary {
   background-color: var(--alamano-primary) !important;
@@ -126,6 +211,26 @@
 .badge.bg-info {
   background-color: var(--alamano-light) !important;
   color: var(--alamano-dark) !important;
+}
+
+.badge.bg-success {
+  background-color: var(--alamano-secondary) !important;
+  color: white !important;
+}
+
+.badge.bg-warning {
+  background-color: var(--alamano-light) !important;
+  color: var(--alamano-dark) !important;
+}
+
+.badge.bg-danger {
+  background-color: var(--alamano-dark) !important;
+  color: white !important;
+}
+
+.badge.bg-dark {
+  background-color: var(--alamano-dark) !important;
+  color: white !important;
 }
 
 /* Alertas personalizadas */
@@ -144,6 +249,24 @@
 .alert-info {
   background-color: rgba(182, 231, 242, 0.3);
   border-color: var(--alamano-light);
+  color: var(--alamano-dark);
+}
+
+.alert-success {
+  background-color: rgba(54, 166, 191, 0.1);
+  border-color: var(--alamano-secondary);
+  color: var(--alamano-secondary);
+}
+
+.alert-warning {
+  background-color: rgba(182, 231, 242, 0.3);
+  border-color: var(--alamano-light);
+  color: var(--alamano-dark);
+}
+
+.alert-danger {
+  background-color: rgba(13, 13, 13, 0.1);
+  border-color: var(--alamano-dark);
   color: var(--alamano-dark);
 }
 
@@ -276,7 +399,12 @@ body {
 }
 
 .star-rating {
-  color: #ffc107;
+  color: var(--alamano-secondary);
+}
+
+.text-warning .star-rating,
+.bi-star-fill.text-warning {
+  color: var(--alamano-secondary) !important;
 }
 
 .favorite-icon {
@@ -365,10 +493,6 @@ body {
 
 .footer-alamano .bi:hover {
   color: var(--alamano-secondary);
-}
-
-.footer-alamano .text-muted {
-  color: #F2F2F2 !important;
 }
 
 /* Cards con tema AlaMano */
@@ -637,4 +761,22 @@ a:hover {
   .stats-card {
     margin-bottom: 1rem;
   }
+}
+
+/* Botón de favoritos personalizado */
+.btn-outline-secondary.favorite-active {
+  background-color: var(--alamano-secondary);
+  border-color: var(--alamano-secondary);
+  color: white;
+}
+
+.btn-outline-secondary.favorite-active:hover {
+  background-color: var(--alamano-secondary-hover);
+  border-color: var(--alamano-secondary-hover);
+  color: white;
+}
+
+/* Icono de corazón en favoritos */
+.favorite-icon.active {
+  color: var(--alamano-secondary) !important;
 }

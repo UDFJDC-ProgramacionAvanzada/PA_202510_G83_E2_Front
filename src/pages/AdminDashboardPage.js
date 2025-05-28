@@ -92,7 +92,7 @@ const AdminDashboardPage = () => {
       },
       reviewed: { bg: "info", text: "Revisado", className: "status-reviewed" },
       resolved: {
-        bg: "primary",
+        bg: "success",
         text: "Resuelto",
         className: "status-resolved",
       },
@@ -113,7 +113,7 @@ const AdminDashboardPage = () => {
 
   const getPriorityBadge = (priority) => {
     const priorityConfig = {
-      high: { bg: "danger", text: "Alta" },
+      high: { bg: "dark", text: "Alta" },
       medium: { bg: "secondary", text: "Media" },
       low: { bg: "info", text: "Baja" },
     };
@@ -323,7 +323,7 @@ const AdminDashboardPage = () => {
                         </div>
                       </td>
                       <td>
-                        <Badge bg={provider.isAvailable ? "secondary" : "dark"}>
+                        <Badge bg={provider.isAvailable ? "success" : "dark"}>
                           {provider.isAvailable ? "Activo" : "Inactivo"}
                         </Badge>
                       </td>

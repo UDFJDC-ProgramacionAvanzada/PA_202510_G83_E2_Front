@@ -1,5 +1,4 @@
-import { Card } from "react-bootstrap"
-import StarRating from "./StarRating"
+import { Card } from "react-bootstrap";
 
 const ReviewItem = ({ review }) => {
   return (
@@ -18,12 +17,21 @@ const ReviewItem = ({ review }) => {
               <small className="text-muted">{review.date}</small>
             </div>
           </div>
-          <StarRating rating={review.rating} />
+          <div>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <i
+                key={i}
+                className={`bi ${
+                  i < review.rating ? "bi-star-fill" : "bi-star"
+                } text-secondary`}
+              ></i>
+            ))}
+          </div>
         </div>
         <Card.Text>{review.comment}</Card.Text>
       </Card.Body>
     </Card>
-  )
-}
+  );
+};
 
-export default ReviewItem
+export default ReviewItem;

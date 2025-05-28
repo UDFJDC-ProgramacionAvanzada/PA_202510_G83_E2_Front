@@ -1,42 +1,51 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Container, Row, Col, Button, Badge, Tabs, Tab, Alert } from "react-bootstrap"
-import { useParams } from "react-router-dom"
-import { useFavorites } from "../context/FavoritesContext"
-import { useAuth } from "../context/AuthContext"
-import StarRating from "../components/StarRating"
-import ReviewItem from "../components/ReviewItem"
-import ReviewForm from "../components/ReviewForm"
-import ImageGallery from "../components/ImageGallery"
-import ReportModal from "../components/ReportModal"
-import { providers, reviews } from "../data/mockData"
+import { useState, useEffect } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Badge,
+  Tabs,
+  Tab,
+  Alert,
+} from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { useFavorites } from "../context/FavoritesContext";
+import { useAuth } from "../context/AuthContext";
+import StarRating from "../components/StarRating";
+import ReviewItem from "../components/ReviewItem";
+import ReviewForm from "../components/ReviewForm";
+import ImageGallery from "../components/ImageGallery";
+import ReportModal from "../components/ReportModal";
+import { providers, reviews } from "../data/mockData";
 
 const ProviderProfilePage = () => {
-  const { id } = useParams()
-  const { favorites, toggleFavorite } = useFavorites()
-  const { isAuthenticated } = useAuth()
-  const [provider, setProvider] = useState(null)
-  const [providerReviews, setProviderReviews] = useState([])
-  const [showReportModal, setShowReportModal] = useState(false)
-  const [reportSuccess, setReportSuccess] = useState(false)
+  const { id } = useParams();
+  const { favorites, toggleFavorite } = useFavorites();
+  const { isAuthenticated } = useAuth();
+  const [provider, setProvider] = useState(null);
+  const [providerReviews, setProviderReviews] = useState([]);
+  const [showReportModal, setShowReportModal] = useState(false);
+  const [reportSuccess, setReportSuccess] = useState(false);
 
   useEffect(() => {
     // Simulación de carga de datos del proveedor
-    const foundProvider = providers.find((p) => p.id === id)
+    const foundProvider = providers.find((p) => p.id === id);
     if (foundProvider) {
-      setProvider(foundProvider)
+      setProvider(foundProvider);
 
       // Filtrar reseñas para este proveedor
-      const filteredReviews = reviews.filter((r) => r.providerId === id)
-      setProviderReviews(filteredReviews)
+      const filteredReviews = reviews.filter((r) => r.providerId === id);
+      setProviderReviews(filteredReviews);
     }
-  }, [id])
+  }, [id]);
 
   const handleReviewSubmit = (reviewData) => {
     if (!isAuthenticated) {
-      alert("Debes iniciar sesión para dejar una reseña")
-      return
+      alert("Debes iniciar sesión para dejar una reseña");
+      return;
     }
 
     // Simulación de envío de reseña
@@ -49,27 +58,27 @@ const ProviderProfilePage = () => {
       rating: reviewData.rating,
       comment: reviewData.comment,
       date: new Date().toLocaleDateString(),
-    }
+    };
 
-    setProviderReviews([newReview, ...providerReviews])
-  }
+    setProviderReviews([newReview, ...providerReviews]);
+  };
 
   const handleReportSubmit = (reportData) => {
-    // Simulación de reporte
-    console.log("Reporte enviado:", reportData)
-    setReportSuccess(true)
-    setTimeout(() => setReportSuccess(false), 5000)
-  }
+    // Simulación de envío de reporte
+    console.log("Reporte enviado:", reportData);
+    setReportSuccess(true);
+    setTimeout(() => setReportSuccess(false), 5000);
+  };
 
   if (!provider) {
     return (
       <Container className="py-5 text-center">
         <h2>Cargando perfil...</h2>
       </Container>
-    )
+    );
   }
 
-  const isFavorite = favorites.includes(provider.id)
+  const isFavorite = favorites.includes(provider.id);
 
   return (
     <>
@@ -99,17 +108,26 @@ const ProviderProfilePage = () => {
                   {provider.rating.toFixed(1)} ({provider.reviewCount} reseñas)
                 </span>
               </div>
-              <Badge bg={provider.isAvailable ? "success" : "danger"} className="availability-badge">
-                {provider.isAvailable ? "Disponible para trabajar" : "No disponible actualmente"}
+              <Badge
+                bg={provider.isAvailable ? "success" : "dark"}
+                className="availability-badge"
+              >
+                {provider.isAvailable
+                  ? "Disponible para trabajar"
+                  : "No disponible actualmente"}
               </Badge>
             </Col>
             <Col md={3} className="mt-3 mt-md-0 text-center text-md-end">
               <Button
-                variant={isFavorite ? "outline-danger" : "outline-primary"}
+                variant={isFavorite ? "outline-secondary" : "outline-primary"}
                 className="mb-2 w-100"
                 onClick={() => toggleFavorite(provider.id)}
               >
-                <i className={`bi ${isFavorite ? "bi-heart-fill" : "bi-heart"} me-2`}></i>
+                <i
+                  className={`bi ${
+                    isFavorite ? "bi-heart-fill" : "bi-heart"
+                  } me-2`}
+                ></i>
                 {isFavorite ? "Quitar de favoritos" : "Guardar en favoritos"}
               </Button>
               <Button variant="primary" className="w-100">
@@ -162,19 +180,34 @@ const ProviderProfilePage = () => {
                     </p>
                     <p className="mb-2">
                       <i className="bi bi-globe me-2"></i>
-                      <a href={provider.website} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={provider.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {provider.website}
                       </a>
                     </p>
 
                     <h5 className="mt-4 mb-2">Horario de atención</h5>
-                    <p className="small mb-1">Lunes a Viernes: {provider.schedule.weekdays}</p>
-                    <p className="small mb-1">Sábados: {provider.schedule.saturday}</p>
-                    <p className="small">Domingos: {provider.schedule.sunday}</p>
+                    <p className="small mb-1">
+                      Lunes a Viernes: {provider.schedule.weekdays}
+                    </p>
+                    <p className="small mb-1">
+                      Sábados: {provider.schedule.saturday}
+                    </p>
+                    <p className="small">
+                      Domingos: {provider.schedule.sunday}
+                    </p>
                   </div>
                 </div>
 
-                <Button variant="outline-danger" size="sm" className="w-100" onClick={() => setShowReportModal(true)}>
+                <Button
+                  variant="outline-danger"
+                  size="sm"
+                  className="w-100"
+                  onClick={() => setShowReportModal(true)}
+                >
                   <i className="bi bi-flag me-2"></i>
                   Reportar perfil
                 </Button>
@@ -188,9 +221,14 @@ const ProviderProfilePage = () => {
                 <h3 className="mb-4">Reseñas de clientes</h3>
 
                 {providerReviews.length > 0 ? (
-                  providerReviews.map((review) => <ReviewItem key={review.id} review={review} />)
+                  providerReviews.map((review) => (
+                    <ReviewItem key={review.id} review={review} />
+                  ))
                 ) : (
-                  <Alert variant="info">Este proveedor aún no tiene reseñas. ¡Sé el primero en dejar una!</Alert>
+                  <Alert variant="info">
+                    Este proveedor aún no tiene reseñas. ¡Sé el primero en dejar
+                    una!
+                  </Alert>
                 )}
               </Col>
 
@@ -207,9 +245,13 @@ const ProviderProfilePage = () => {
         </Tabs>
       </Container>
 
-      <ReportModal show={showReportModal} handleClose={() => setShowReportModal(false)} onSubmit={handleReportSubmit} />
+      <ReportModal
+        show={showReportModal}
+        handleClose={() => setShowReportModal(false)}
+        onSubmit={handleReportSubmit}
+      />
     </>
-  )
-}
+  );
+};
 
-export default ProviderProfilePage
+export default ProviderProfilePage;

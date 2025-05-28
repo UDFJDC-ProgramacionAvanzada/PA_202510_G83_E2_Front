@@ -1,9 +1,17 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Container, Row, Col, Card, Form, Button, Alert } from "react-bootstrap"
-import { Link, useNavigate } from "react-router-dom"
-import { useAuth } from "../context/AuthContext"
+import { useState } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Form,
+  Button,
+  Alert,
+} from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -11,84 +19,90 @@ const RegisterPage = () => {
     email: "",
     password: "",
     confirmPassword: "",
-  })
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
+  });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const { register } = useAuth()
-  const navigate = useNavigate()
+  const { register } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setError("")
+    e.preventDefault();
+    setError("");
 
-    const { name, email, password, confirmPassword } = formData
+    const { name, email, password, confirmPassword } = formData;
 
     if (!name || !email || !password || !confirmPassword) {
-      setError("Por favor, completa todos los campos")
-      return
+      setError("Por favor, completa todos los campos");
+      return;
     }
 
     if (password !== confirmPassword) {
-      setError("Las contraseñas no coinciden")
-      return
+      setError("Las contraseñas no coinciden");
+      return;
     }
 
     if (password.length < 6) {
-      setError("La contraseña debe tener al menos 6 caracteres")
-      return
+      setError("La contraseña debe tener al menos 6 caracteres");
+      return;
     }
 
     try {
-      setLoading(true)
-
-      // Simulación de registro
-      // en un futuro se haría la petición al backend
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      // Registramos al usuario
-      register({
+      setLoading(true);
+      const result = await register({
         name,
         email,
-        isProvider: false,
-      })
+      });
 
-      navigate("/")
+      if (result.success) {
+        navigate("/");
+      }
     } catch (err) {
-      setError("Error al registrar la cuenta. Inténtalo de nuevo.")
-      console.error(err)
+      setError("Error al registrar la cuenta. Inténtalo de nuevo.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <Container className="py-5">
       <Row className="justify-content-center">
         <Col md={6} lg={5}>
-          <Card>
+          <Card className="card-alamano">
             <Card.Body className="p-4">
-              <h2 className="text-center mb-4">Crear Cuenta</h2>
+              <h2 className="text-center mb-4 accent-alamano">Crear Cuenta</h2>
 
               {error && <Alert variant="danger">{error}</Alert>}
 
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                   <Form.Label>Nombre completo</Form.Label>
-                  <Form.Control type="text" name="name" value={formData.name} onChange={handleChange} required />
+                  <Form.Control
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                   <Form.Label>Correo electrónico</Form.Label>
-                  <Form.Control type="email" name="email" value={formData.email} onChange={handleChange} required />
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -100,7 +114,9 @@ const RegisterPage = () => {
                     onChange={handleChange}
                     required
                   />
-                  <Form.Text className="text-muted">La contraseña debe tener al menos 6 caracteres</Form.Text>
+                  <Form.Text className="text-muted">
+                    La contraseña debe tener al menos 6 caracteres
+                  </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -115,10 +131,19 @@ const RegisterPage = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                  <Form.Check type="checkbox" label="Acepto los términos y condiciones" required />
+                  <Form.Check
+                    type="checkbox"
+                    label="Acepto los términos y condiciones"
+                    required
+                  />
                 </Form.Group>
 
-                <Button variant="primary" type="submit" className="w-100" disabled={loading}>
+                <Button
+                  variant="primary"
+                  type="submit"
+                  className="w-100"
+                  disabled={loading}
+                >
                   {loading ? "Creando cuenta..." : "Registrarse"}
                 </Button>
               </Form>
@@ -136,7 +161,7 @@ const RegisterPage = () => {
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default RegisterPage
+export default RegisterPage;
