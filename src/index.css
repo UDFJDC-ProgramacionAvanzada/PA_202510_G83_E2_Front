@@ -273,13 +273,15 @@
 /* Navbar personalizado */
 .navbar-alamano {
   background: linear-gradient(135deg, var(--alamano-primary) 0%, var(--alamano-secondary) 100%) !important;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .navbar-alamano .navbar-brand {
   color: white !important;
   font-weight: bold;
+  font-size: 1.5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 }
 
@@ -290,77 +292,122 @@
 .navbar-alamano .nav-link {
   color: rgba(255, 255, 255, 0.9) !important;
   transition: all 0.3s ease;
-  border-radius: 8px;
-  padding: 8px 12px !important;
-  margin: 0 2px;
+  position: relative;
+  font-weight: 500;
 }
 
 .navbar-alamano .nav-link:hover,
 .navbar-alamano .nav-link-custom:hover {
   color: white !important;
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+
+.navbar-alamano .nav-link::after,
+.navbar-alamano .nav-link-custom::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: white;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.navbar-alamano .nav-link:hover::after,
+.navbar-alamano .nav-link-custom:hover::after {
+  width: 80%;
+  opacity: 1;
 }
 
 .navbar-alamano .nav-link-custom {
   color: rgba(255, 255, 255, 0.9) !important;
-  text-decoration: none;
   transition: all 0.3s ease;
-  border-radius: 8px;
-  padding: 8px 12px;
-  margin: 0 2px;
-  display: flex;
-  align-items: center;
+  position: relative;
+  font-weight: 500;
 }
 
 .navbar-alamano .btn-outline-light {
   color: white;
   border-color: rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
-  border-radius: 8px;
 }
 
 .navbar-alamano .btn-outline-light:hover {
   background-color: rgba(255, 255, 255, 0.15);
   border-color: white;
   color: white;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-alamano .btn-light {
-  background-color: white;
-  border-color: white;
-  transition: all 0.3s ease;
-  border-radius: 8px;
-}
-
-.navbar-alamano .btn-light:hover {
-  background-color: rgba(255, 255, 255, 0.9);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-alamano .user-dropdown {
+.navbar-alamano .search-input {
+  border-radius: 20px 0 0 20px;
   border: none;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border-radius: 25px;
-  padding: 6px 12px;
+  background-color: rgba(255, 255, 255, 0.9);
   transition: all 0.3s ease;
 }
 
-.navbar-alamano .user-dropdown:hover,
-.navbar-alamano .user-dropdown:focus {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: white;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.navbar-alamano .search-input:focus {
+  background-color: white;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
 }
 
-.navbar-alamano .dropdown-toggle::after {
-  margin-left: 8px;
+.navbar-alamano .search-button {
+  border-radius: 0 20px 20px 0;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.navbar-alamano .search-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-alamano .logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Animación para el navbar */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-alamano {
+  animation: fadeInDown 0.4s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+
+  .navbar-alamano .nav-link::after,
+  .navbar-alamano .nav-link-custom::after {
+    display: none;
+  }
+
+  .navbar-alamano .nav-link,
+  .navbar-alamano .nav-link-custom {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar-alamano .nav-link:hover,
+  .navbar-alamano .nav-link-custom:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: none;
+    padding-left: 0.5rem;
+  }
 }
 
 /* Dropdown personalizado */
