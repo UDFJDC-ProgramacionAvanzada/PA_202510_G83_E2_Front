@@ -346,6 +346,10 @@ export const translations = {
     october: "Octubre",
     november: "Noviembre",
     december: "Diciembre",
+
+    // Preferences
+    preferences: "Preferencias",
+    languageChangeNote: "Los cambios se aplicarán inmediatamente",
   },
 
   en: {
@@ -690,5 +694,9 @@ export const translations = {
     october: "October",
     november: "November",
     december: "December",
+
+    // Preferences
+    preferences: "Preferences",
+    languageChangeNote: "Changes will be applied immediately",
   },
 };

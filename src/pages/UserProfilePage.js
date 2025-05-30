@@ -15,7 +15,7 @@ import { useLanguage } from "../context/LanguageContext";
 
 const UserProfilePage = () => {
   const { user, updateUser } = useAuth();
-  const { t } = useLanguage();
+  const { t, language, changeLanguage } = useLanguage(); // Añadir language y changeLanguage
 
   const [formData, setFormData] = useState({
     name: user?.name || "",
@@ -254,6 +254,27 @@ const UserProfilePage = () => {
                         value={formData.confirmPassword}
                         onChange={handleChange}
                       />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <hr className="my-4" />
+
+                <h5 className="mb-3">{t("preferences")}</h5>
+                <Row>
+                  <Col md={6}>
+                    <Form.Group className="mb-3">
+                      <Form.Label>{t("language")}</Form.Label>
+                      <Form.Select
+                        value={language}
+                        onChange={(e) => changeLanguage(e.target.value)}
+                      >
+                        <option value="es">Español</option>
+                        <option value="en">English</option>
+                      </Form.Select>
+                      <Form.Text className="text-muted">
+                        {t("languageChangeNote")}
+                      </Form.Text>
                     </Form.Group>
                   </Col>
                 </Row>

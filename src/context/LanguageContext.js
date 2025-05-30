@@ -17,16 +17,21 @@ export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState("es");
 
   useEffect(() => {
-    // Cargar idioma guardado del localStorage
+    // Detectar idioma del navegador automáticamente
+    const browserLanguage = navigator.language.split("-")[0];
+
+    // Verificar si tenemos soporte para el idioma del navegador
+    if (browserLanguage === "en" || browserLanguage === "es") {
+      setLanguage(browserLanguage);
+    } else {
+      // Fallback a español si no soportamos el idioma
+      setLanguage("es");
+    }
+
+    // Solo verificar localStorage si el usuario ha cambiado manualmente el idioma
     const savedLanguage = localStorage.getItem("alamano_language");
     if (savedLanguage && (savedLanguage === "es" || savedLanguage === "en")) {
       setLanguage(savedLanguage);
-    } else {
-      // Detectar idioma del navegador
-      const browserLanguage = navigator.language.split("-")[0];
-      if (browserLanguage === "en" || browserLanguage === "es") {
-        setLanguage(browserLanguage);
-      }
     }
   }, []);
 
