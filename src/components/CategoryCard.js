@@ -1,7 +1,12 @@
+"use client";
+
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 
 const CategoryCard = ({ category }) => {
+  const { t } = useLanguage();
+
   return (
     <Link
       to={`/search?category=${category.id}`}
@@ -12,9 +17,11 @@ const CategoryCard = ({ category }) => {
           <i className={`bi ${category.icon} fs-1 text-primary`}></i>
         </div>
         <Card.Body>
-          <Card.Title className="accent-alamano">{category.name}</Card.Title>
+          <Card.Title className="accent-alamano">
+            {t(`categories.${category.id}`)}
+          </Card.Title>
           <Card.Text className="text-muted small">
-            {category.description}
+            {t(`categoryDescriptions.${category.id}`)}
           </Card.Text>
         </Card.Body>
       </Card>

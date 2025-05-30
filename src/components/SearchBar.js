@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Form, Button, Row, Col, Collapse } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 
 const SearchBar = ({ className, showAdvanced = false }) => {
   const [query, setQuery] = useState("");
@@ -10,16 +11,17 @@ const SearchBar = ({ className, showAdvanced = false }) => {
   const [location, setLocation] = useState("");
   const [showFilters, setShowFilters] = useState(showAdvanced);
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const categories = [
-    { id: "hogar", name: "Hogar y Reparaciones" },
-    { id: "educacion", name: "Educación y Tutoría" },
-    { id: "tecnologia", name: "Tecnología" },
-    { id: "mascotas", name: "Cuidado de Mascotas" },
-    { id: "belleza", name: "Belleza y Bienestar" },
-    { id: "transporte", name: "Transporte" },
-    { id: "eventos", name: "Eventos" },
-    { id: "legal", name: "Servicios Legales" },
+    { id: "hogar", name: t("categories.hogar") },
+    { id: "educacion", name: t("categories.educacion") },
+    { id: "tecnologia", name: t("categories.tecnologia") },
+    { id: "mascotas", name: t("categories.mascotas") },
+    { id: "belleza", name: t("categories.belleza") },
+    { id: "transporte", name: t("categories.transporte") },
+    { id: "eventos", name: t("categories.eventos") },
+    { id: "legal", name: t("categories.legal") },
   ];
 
   const handleSubmit = (e) => {
@@ -40,7 +42,7 @@ const SearchBar = ({ className, showAdvanced = false }) => {
           <Col xs={12} md={showFilters ? 12 : 9}>
             <Form.Control
               type="text"
-              placeholder="¿Qué servicio necesitas?"
+              placeholder={t("whatServiceNeed")}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
@@ -48,7 +50,7 @@ const SearchBar = ({ className, showAdvanced = false }) => {
           {!showFilters && (
             <Col xs={12} md={3}>
               <Button variant="primary" type="submit" className="w-100">
-                Buscar
+                {t("search")}
               </Button>
             </Col>
           )}
@@ -59,9 +61,8 @@ const SearchBar = ({ className, showAdvanced = false }) => {
             variant="link"
             onClick={() => setShowFilters(!showFilters)}
             className="p-0 text-decoration-none"
-            style={{ color: "#F2F2F2" }}
           >
-            {showFilters ? "Ocultar filtros" : "Mostrar filtros avanzados"}
+            {showFilters ? t("hideFilters") : t("showAdvancedFilters")}
           </Button>
         </div>
 
@@ -73,7 +74,7 @@ const SearchBar = ({ className, showAdvanced = false }) => {
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 >
-                  <option value="">Todas las categorías</option>
+                  <option value="">{t("allCategories")}</option>
                   {categories.map((cat) => (
                     <option key={cat.id} value={cat.id}>
                       {cat.name}
@@ -84,14 +85,14 @@ const SearchBar = ({ className, showAdvanced = false }) => {
               <Col xs={12} md={6}>
                 <Form.Control
                   type="text"
-                  placeholder="Ubicación"
+                  placeholder={t("location")}
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                 />
               </Col>
               <Col xs={12} className="mt-3">
                 <Button variant="primary" type="submit" className="w-100">
-                  Buscar
+                  {t("search")}
                 </Button>
               </Col>
             </Row>

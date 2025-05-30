@@ -1,11 +1,21 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Container, Row, Col, Card, Form, Button, Alert } from "react-bootstrap"
-import { useAuth } from "../context/AuthContext"
+import { useState } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Form,
+  Button,
+  Alert,
+} from "react-bootstrap";
+import { useAuth } from "../context/AuthContext";
+import { useLanguage } from "../context/LanguageContext";
 
 const UserProfilePage = () => {
-  const { user, updateUser } = useAuth()
+  const { user, updateUser } = useAuth();
+  const { t } = useLanguage();
 
   const [formData, setFormData] = useState({
     name: user?.name || "",
@@ -15,58 +25,58 @@ const UserProfilePage = () => {
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
-  })
+  });
 
-  const [success, setSuccess] = useState(false)
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setError("")
-    setSuccess(false)
+    e.preventDefault();
+    setError("");
+    setSuccess(false);
 
     // Validación de contraseñas si se está intentando cambiar
     if (formData.newPassword) {
       if (!formData.currentPassword) {
-        setError("Debes ingresar tu contraseña actual")
-        return
+        setError(t("enterCurrentPassword"));
+        return;
       }
 
       if (formData.newPassword !== formData.confirmPassword) {
-        setError("Las nuevas contraseñas no coinciden")
-        return
+        setError(t("newPasswordsDontMatch"));
+        return;
       }
 
       if (formData.newPassword.length < 6) {
-        setError("La nueva contraseña debe tener al menos 6 caracteres")
-        return
+        setError(t("newPasswordMinLength"));
+        return;
       }
     }
 
     try {
-      setLoading(true)
+      setLoading(true);
 
-      // Simulacion de actualizacion
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      // Simulación de actualización de perfil
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // Actualizar datos del usuario (sin incluir contraseñas)
+      // Actualizar datos del usuario (sin incluir contraseñas en el objeto)
       const updatedUserData = {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         location: formData.location,
-      }
+      };
 
-      updateUser(updatedUserData)
+      updateUser(updatedUserData);
 
       // Limpiar campos de contraseña
       setFormData((prev) => ({
@@ -74,28 +84,28 @@ const UserProfilePage = () => {
         currentPassword: "",
         newPassword: "",
         confirmPassword: "",
-      }))
+      }));
 
-      setSuccess(true)
+      setSuccess(true);
     } catch (err) {
-      setError("Error al actualizar el perfil")
-      console.error(err)
+      setError(t("profileUpdateError"));
+      console.error(err);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   if (!user) {
     return (
       <Container className="py-5 text-center">
-        <Alert variant="warning">Debes iniciar sesión para ver tu perfil</Alert>
+        <Alert variant="warning">{t("mustLogin")}</Alert>
       </Container>
-    )
+    );
   }
 
   return (
     <Container className="py-5">
-      <h1 className="mb-4">Mi Perfil</h1>
+      <h1 className="mb-4">{t("myProfileTitle")}</h1>
 
       <Row>
         <Col md={3}>
@@ -106,13 +116,17 @@ const UserProfilePage = () => {
                   src={user.profileImage || "/user-placeholder.jpg"}
                   alt={user.name}
                   className="rounded-circle"
-                  style={{ width: "120px", height: "120px", objectFit: "cover" }}
+                  style={{
+                    width: "120px",
+                    height: "120px",
+                    objectFit: "cover",
+                  }}
                 />
               </div>
               <h5>{user.name}</h5>
               <p className="text-muted small">{user.email}</p>
               <Button variant="outline-primary" size="sm" className="mt-2">
-                Cambiar foto
+                {t("changePhoto")}
               </Button>
             </Card.Body>
           </Card>
@@ -121,15 +135,15 @@ const UserProfilePage = () => {
             <Card.Body>
               <div className="d-grid gap-2">
                 <Button variant="outline-primary" href="/favorites">
-                  Mis Favoritos
+                  {t("myFavorites")}
                 </Button>
                 {user.isProvider ? (
                   <Button variant="outline-primary" href="/provider-dashboard">
-                    Dashboard de Proveedor
+                    {t("providerDashboard")}
                   </Button>
                 ) : (
                   <Button variant="outline-success" href="/create-profile">
-                    Convertirme en Proveedor
+                    {t("becomeProviderButton")}
                   </Button>
                 )}
               </div>
@@ -140,9 +154,11 @@ const UserProfilePage = () => {
         <Col md={9}>
           <Card>
             <Card.Body>
-              <h4 className="mb-4">Información Personal</h4>
+              <h4 className="mb-4">{t("personalInfo")}</h4>
 
-              {success && <Alert variant="success">Tu perfil ha sido actualizado correctamente</Alert>}
+              {success && (
+                <Alert variant="success">{t("profileUpdated")}</Alert>
+              )}
 
               {error && <Alert variant="danger">{error}</Alert>}
 
@@ -150,15 +166,27 @@ const UserProfilePage = () => {
                 <Row>
                   <Col md={6}>
                     <Form.Group className="mb-3">
-                      <Form.Label>Nombre completo</Form.Label>
-                      <Form.Control type="text" name="name" value={formData.name} onChange={handleChange} required />
+                      <Form.Label>{t("fullName")}</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                      />
                     </Form.Group>
                   </Col>
 
                   <Col md={6}>
                     <Form.Group className="mb-3">
-                      <Form.Label>Correo electrónico</Form.Label>
-                      <Form.Control type="email" name="email" value={formData.email} onChange={handleChange} required />
+                      <Form.Label>{t("email")}</Form.Label>
+                      <Form.Control
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
                     </Form.Group>
                   </Col>
                 </Row>
@@ -166,26 +194,36 @@ const UserProfilePage = () => {
                 <Row>
                   <Col md={6}>
                     <Form.Group className="mb-3">
-                      <Form.Label>Teléfono</Form.Label>
-                      <Form.Control type="tel" name="phone" value={formData.phone} onChange={handleChange} />
+                      <Form.Label>{t("phone")}</Form.Label>
+                      <Form.Control
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                      />
                     </Form.Group>
                   </Col>
 
                   <Col md={6}>
                     <Form.Group className="mb-3">
-                      <Form.Label>Ubicación</Form.Label>
-                      <Form.Control type="text" name="location" value={formData.location} onChange={handleChange} />
+                      <Form.Label>{t("location")}</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="location"
+                        value={formData.location}
+                        onChange={handleChange}
+                      />
                     </Form.Group>
                   </Col>
                 </Row>
 
                 <hr className="my-4" />
 
-                <h5 className="mb-3">Cambiar Contraseña</h5>
+                <h5 className="mb-3">{t("changePassword")}</h5>
                 <Row>
                   <Col md={4}>
                     <Form.Group className="mb-3">
-                      <Form.Label>Contraseña actual</Form.Label>
+                      <Form.Label>{t("currentPassword")}</Form.Label>
                       <Form.Control
                         type="password"
                         name="currentPassword"
@@ -197,7 +235,7 @@ const UserProfilePage = () => {
 
                   <Col md={4}>
                     <Form.Group className="mb-3">
-                      <Form.Label>Nueva contraseña</Form.Label>
+                      <Form.Label>{t("newPassword")}</Form.Label>
                       <Form.Control
                         type="password"
                         name="newPassword"
@@ -209,7 +247,7 @@ const UserProfilePage = () => {
 
                   <Col md={4}>
                     <Form.Group className="mb-3">
-                      <Form.Label>Confirmar nueva contraseña</Form.Label>
+                      <Form.Label>{t("confirmNewPassword")}</Form.Label>
                       <Form.Control
                         type="password"
                         name="confirmPassword"
@@ -222,7 +260,7 @@ const UserProfilePage = () => {
 
                 <div className="d-flex justify-content-end mt-3">
                   <Button variant="primary" type="submit" disabled={loading}>
-                    {loading ? "Guardando..." : "Guardar Cambios"}
+                    {loading ? t("saving") : t("saveChanges")}
                   </Button>
                 </div>
               </Form>
@@ -231,7 +269,7 @@ const UserProfilePage = () => {
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default UserProfilePage
+export default UserProfilePage;

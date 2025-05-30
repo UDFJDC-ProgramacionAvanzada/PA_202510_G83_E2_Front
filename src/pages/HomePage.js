@@ -1,11 +1,16 @@
+"use client";
+
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
 import CategoryCard from "../components/CategoryCard";
 import ProviderCard from "../components/ProviderCard";
 import { Link } from "react-router-dom";
 import { popularCategories, featuredProviders } from "../data/mockData";
+import { useLanguage } from "../context/LanguageContext";
 
 const HomePage = () => {
+  const { t } = useLanguage();
+
   return (
     <>
       <section className="hero-section text-center">
@@ -13,12 +18,9 @@ const HomePage = () => {
           <div className="fade-in">
             <h1 className="display-4 fw-bold mb-4">
               <i className="bi bi-hand-thumbs-up me-3"></i>
-              Encuentra el servicio que necesitas
+              {t("heroTitle")}
             </h1>
-            <p className="lead mb-5">
-              Conectamos a personas con los mejores proveedores de servicios
-              locales. Tu solución está al alcance de tu mano.
-            </p>
+            <p className="lead mb-5">{t("heroSubtitle")}</p>
             <SearchBar className="max-width-md mx-auto" />
           </div>
         </Container>
@@ -27,10 +29,8 @@ const HomePage = () => {
       <Container className="py-5">
         <section className="mb-5">
           <div className="text-center mb-5">
-            <h2 className="accent-alamano mb-3">Categorías populares</h2>
-            <p className="text-muted">
-              Descubre los servicios más solicitados en tu área
-            </p>
+            <h2 className="accent-alamano mb-3">{t("popularCategories")}</h2>
+            <p className="text-muted">{t("popularCategoriesSubtitle")}</p>
           </div>
           <Row xs={1} sm={2} md={3} lg={4} className="g-4">
             {popularCategories.map((category) => (
@@ -44,14 +44,14 @@ const HomePage = () => {
         <section className="mb-5">
           <div className="d-flex justify-content-between align-items-center mb-4">
             <div>
-              <h2 className="accent-alamano mb-2">Proveedores destacados</h2>
+              <h2 className="accent-alamano mb-2">{t("featuredProviders")}</h2>
               <p className="text-muted mb-0">
-                Los mejores profesionales de nuestra plataforma
+                {t("featuredProvidersSubtitle")}
               </p>
             </div>
             <Link to="/search" className="text-decoration-none">
               <Button variant="outline-primary">
-                Ver todos <i className="bi bi-arrow-right ms-1"></i>
+                {t("seeAll")} <i className="bi bi-arrow-right ms-1"></i>
               </Button>
             </Link>
           </div>
@@ -70,16 +70,14 @@ const HomePage = () => {
               <div className="mb-4">
                 <i className="bi bi-briefcase fs-1 accent-alamano"></i>
               </div>
-              <h2 className="accent-alamano mb-3">¿Eres un profesional?</h2>
-              <p className="mb-4 text-muted">
-                Únete a nuestra plataforma y comienza a ofrecer tus servicios a
-                miles de personas. Crea tu perfil profesional y haz crecer tu
-                negocio.
-              </p>
+              <h2 className="accent-alamano mb-3">
+                {t("professionalQuestion")}
+              </h2>
+              <p className="mb-4 text-muted">{t("professionalDescription")}</p>
               <Link to="/create-profile">
                 <Button variant="primary" size="lg">
                   <i className="bi bi-plus-circle me-2"></i>
-                  Crear perfil profesional
+                  {t("createProfessionalProfile")}
                 </Button>
               </Link>
             </Card.Body>

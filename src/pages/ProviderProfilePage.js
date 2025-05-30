@@ -14,6 +14,7 @@ import {
 import { useParams } from "react-router-dom";
 import { useFavorites } from "../context/FavoritesContext";
 import { useAuth } from "../context/AuthContext";
+import { useLanguage } from "../context/LanguageContext";
 import StarRating from "../components/StarRating";
 import ReviewItem from "../components/ReviewItem";
 import ReviewForm from "../components/ReviewForm";
@@ -25,6 +26,7 @@ const ProviderProfilePage = () => {
   const { id } = useParams();
   const { favorites, toggleFavorite } = useFavorites();
   const { isAuthenticated } = useAuth();
+  const { t } = useLanguage();
   const [provider, setProvider] = useState(null);
   const [providerReviews, setProviderReviews] = useState([]);
   const [showReportModal, setShowReportModal] = useState(false);
@@ -44,7 +46,7 @@ const ProviderProfilePage = () => {
 
   const handleReviewSubmit = (reviewData) => {
     if (!isAuthenticated) {
-      alert("Debes iniciar sesión para dejar una reseña");
+      alert(t("mustLoginReview"));
       return;
     }
 
@@ -73,7 +75,7 @@ const ProviderProfilePage = () => {
   if (!provider) {
     return (
       <Container className="py-5 text-center">
-        <h2>Cargando perfil...</h2>
+        <h2>{t("loadingProfile")}</h2>
       </Container>
     );
   }
@@ -96,7 +98,7 @@ const ProviderProfilePage = () => {
               <h1 className="mb-2">{provider.name}</h1>
               <p className="text-muted mb-2">
                 <i className="bi bi-briefcase me-2"></i>
-                {provider.category}
+                {t(`categories.${provider.categoryId}`)}
               </p>
               <p className="mb-2">
                 <i className="bi bi-geo-alt me-2"></i>
@@ -105,7 +107,8 @@ const ProviderProfilePage = () => {
               <div className="d-flex align-items-center mb-3">
                 <StarRating rating={provider.rating} size="medium" />
                 <span className="ms-2">
-                  {provider.rating.toFixed(1)} ({provider.reviewCount} reseñas)
+                  {provider.rating.toFixed(1)} ({provider.reviewCount}{" "}
+                  {t("reviews")})
                 </span>
               </div>
               <Badge
@@ -113,8 +116,8 @@ const ProviderProfilePage = () => {
                 className="availability-badge"
               >
                 {provider.isAvailable
-                  ? "Disponible para trabajar"
-                  : "No disponible actualmente"}
+                  ? t("availableToWork")
+                  : t("notAvailableCurrently")}
               </Badge>
             </Col>
             <Col md={3} className="mt-3 mt-md-0 text-center text-md-end">
@@ -128,11 +131,11 @@ const ProviderProfilePage = () => {
                     isFavorite ? "bi-heart-fill" : "bi-heart"
                   } me-2`}
                 ></i>
-                {isFavorite ? "Quitar de favoritos" : "Guardar en favoritos"}
+                {isFavorite ? t("removeFromFavorites") : t("addToFavorites")}
               </Button>
               <Button variant="primary" className="w-100">
                 <i className="bi bi-chat-dots me-2"></i>
-                Contactar
+                {t("contact")}
               </Button>
             </Col>
           </Row>
@@ -142,18 +145,18 @@ const ProviderProfilePage = () => {
       <Container className="py-4">
         {reportSuccess && (
           <Alert variant="success" className="mb-4">
-            Gracias por tu reporte. Lo revisaremos lo antes posible.
+            {t("reportSuccess")}
           </Alert>
         )}
 
         <Tabs defaultActiveKey="about" className="mb-4">
-          <Tab eventKey="about" title="Acerca de">
+          <Tab eventKey="about" title={t("about")}>
             <Row>
               <Col md={8}>
-                <h3 className="mb-3">Descripción</h3>
+                <h3 className="mb-3">{t("description")}</h3>
                 <p>{provider.description}</p>
 
-                <h3 className="mb-3 mt-4">Habilidades</h3>
+                <h3 className="mb-3 mt-4">{t("skills")}</h3>
                 <div className="mb-4">
                   {provider.skills.map((skill, index) => (
                     <Badge bg="secondary" className="me-2 mb-2" key={index}>
@@ -162,14 +165,14 @@ const ProviderProfilePage = () => {
                   ))}
                 </div>
 
-                <h3 className="mb-3">Galería de trabajos</h3>
+                <h3 className="mb-3">{t("workGallery")}</h3>
                 <ImageGallery images={provider.gallery} />
               </Col>
 
               <Col md={4}>
                 <div className="card mb-4">
                   <div className="card-body">
-                    <h4 className="card-title mb-3">Información de contacto</h4>
+                    <h4 className="card-title mb-3">{t("contactInfo")}</h4>
                     <p className="mb-2">
                       <i className="bi bi-telephone me-2"></i>
                       {provider.phone}
@@ -178,26 +181,28 @@ const ProviderProfilePage = () => {
                       <i className="bi bi-envelope me-2"></i>
                       {provider.email}
                     </p>
-                    <p className="mb-2">
-                      <i className="bi bi-globe me-2"></i>
-                      <a
-                        href={provider.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {provider.website}
-                      </a>
-                    </p>
+                    {provider.website && (
+                      <p className="mb-2">
+                        <i className="bi bi-globe me-2"></i>
+                        <a
+                          href={provider.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {provider.website}
+                        </a>
+                      </p>
+                    )}
 
-                    <h5 className="mt-4 mb-2">Horario de atención</h5>
+                    <h5 className="mt-4 mb-2">{t("schedule")}</h5>
                     <p className="small mb-1">
-                      Lunes a Viernes: {provider.schedule.weekdays}
+                      {t("mondayToFriday")}: {provider.schedule.weekdays}
                     </p>
                     <p className="small mb-1">
-                      Sábados: {provider.schedule.saturday}
+                      {t("saturday")}: {provider.schedule.saturday}
                     </p>
                     <p className="small">
-                      Domingos: {provider.schedule.sunday}
+                      {t("sunday")}: {provider.schedule.sunday}
                     </p>
                   </div>
                 </div>
@@ -209,33 +214,33 @@ const ProviderProfilePage = () => {
                   onClick={() => setShowReportModal(true)}
                 >
                   <i className="bi bi-flag me-2"></i>
-                  Reportar perfil
+                  {t("reportProfile")}
                 </Button>
               </Col>
             </Row>
           </Tab>
 
-          <Tab eventKey="reviews" title={`Reseñas (${providerReviews.length})`}>
+          <Tab
+            eventKey="reviews"
+            title={`${t("reviews")} (${providerReviews.length})`}
+          >
             <Row>
               <Col md={8}>
-                <h3 className="mb-4">Reseñas de clientes</h3>
+                <h3 className="mb-4">{t("clientReviews")}</h3>
 
                 {providerReviews.length > 0 ? (
                   providerReviews.map((review) => (
                     <ReviewItem key={review.id} review={review} />
                   ))
                 ) : (
-                  <Alert variant="info">
-                    Este proveedor aún no tiene reseñas. ¡Sé el primero en dejar
-                    una!
-                  </Alert>
+                  <Alert variant="info">{t("noReviews")}</Alert>
                 )}
               </Col>
 
               <Col md={4}>
                 <div className="card">
                   <div className="card-body">
-                    <h4 className="card-title mb-3">Deja tu reseña</h4>
+                    <h4 className="card-title mb-3">{t("leaveReview")}</h4>
                     <ReviewForm onSubmit={handleReviewSubmit} />
                   </div>
                 </div>

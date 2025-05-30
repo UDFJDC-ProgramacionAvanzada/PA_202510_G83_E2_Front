@@ -5,12 +5,14 @@ import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import ProviderCard from "../components/ProviderCard";
+import { useLanguage } from "../context/LanguageContext";
 import { providers } from "../data/mockData";
 
 const SearchResultsPage = () => {
   const [searchParams] = useSearchParams();
   const [filteredProviders, setFilteredProviders] = useState([]);
   const [sortBy, setSortBy] = useState("rating");
+  const { t } = useLanguage();
 
   const query = searchParams.get("q") || "";
   const category = searchParams.get("category") || "";
@@ -71,7 +73,7 @@ const SearchResultsPage = () => {
 
   return (
     <Container className="py-5">
-      <h1 className="mb-4 accent-alamano">Resultados de búsqueda</h1>
+      <h1 className="mb-4 accent-alamano">{t("searchResults")}</h1>
 
       <Row className="mb-4">
         <Col>
@@ -85,42 +87,42 @@ const SearchResultsPage = () => {
             <Card.Header className="bg-light-alamano">
               <h5 className="mb-0">
                 <i className="bi bi-funnel me-2"></i>
-                Filtros
+                {t("filters")}
               </h5>
             </Card.Header>
             <Card.Body>
               <Form.Group className="mb-3">
-                <Form.Label>Disponibilidad</Form.Label>
+                <Form.Label>{t("availability")}</Form.Label>
                 <Form.Check
                   type="checkbox"
-                  label="Solo disponibles"
+                  label={t("onlyAvailable")}
                   id="availability-check"
                   className="text-primary"
                 />
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label>Calificación mínima</Form.Label>
+                <Form.Label>{t("minimumRating")}</Form.Label>
                 <Form.Select>
-                  <option value="">Cualquier calificación</option>
-                  <option value="4">4+ estrellas</option>
-                  <option value="3">3+ estrellas</option>
-                  <option value="2">2+ estrellas</option>
+                  <option value="">{t("anyRating")}</option>
+                  <option value="4">4+ {t("stars")}</option>
+                  <option value="3">3+ {t("stars")}</option>
+                  <option value="2">2+ {t("stars")}</option>
                 </Form.Select>
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label>Precio</Form.Label>
+                <Form.Label>{t("price")}</Form.Label>
                 <Form.Range />
                 <div className="d-flex justify-content-between">
-                  <small className="text-muted">Económico</small>
-                  <small className="text-muted">Premium</small>
+                  <small className="text-muted">{t("economical")}</small>
+                  <small className="text-muted">{t("premium")}</small>
                 </div>
               </Form.Group>
 
               <Button variant="primary" className="w-100">
                 <i className="bi bi-check-circle me-1"></i>
-                Aplicar filtros
+                {t("applyFilters")}
               </Button>
             </Card.Body>
           </Card>
@@ -129,17 +131,17 @@ const SearchResultsPage = () => {
         <Col md={9}>
           <div className="d-flex justify-content-between align-items-center mb-3">
             <p className="mb-0 accent-alamano">
-              <strong>{filteredProviders.length}</strong> resultados encontrados
+              <strong>{filteredProviders.length}</strong> {t("resultsFound")}
             </p>
             <Form.Select
               style={{ width: "auto" }}
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
             >
-              <option value="rating">Mejor calificados</option>
-              <option value="reviews">Más reseñas</option>
-              <option value="name_asc">Nombre (A-Z)</option>
-              <option value="name_desc">Nombre (Z-A)</option>
+              <option value="rating">{t("bestRated")}</option>
+              <option value="reviews">{t("mostReviews")}</option>
+              <option value="name_asc">{t("nameAZ")}</option>
+              <option value="name_desc">{t("nameZA")}</option>
             </Form.Select>
           </div>
 
@@ -155,10 +157,8 @@ const SearchResultsPage = () => {
             <Card className="text-center p-5 card-alamano">
               <Card.Body>
                 <i className="bi bi-search fs-1 text-muted mb-3"></i>
-                <h4 className="accent-alamano">No se encontraron resultados</h4>
-                <p className="text-muted">
-                  Intenta con otros términos de búsqueda o filtros
-                </p>
+                <h4 className="accent-alamano">{t("noResults")}</h4>
+                <p className="text-muted">{t("noResultsDescription")}</p>
               </Card.Body>
             </Card>
           )}

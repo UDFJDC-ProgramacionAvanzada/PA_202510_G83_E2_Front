@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useLanguage } from "../context/LanguageContext";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +25,7 @@ const RegisterPage = () => {
   const [loading, setLoading] = useState(false);
 
   const { register } = useAuth();
+  const { t } = useLanguage();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -41,17 +43,17 @@ const RegisterPage = () => {
     const { name, email, password, confirmPassword } = formData;
 
     if (!name || !email || !password || !confirmPassword) {
-      setError("Por favor, completa todos los campos");
+      setError(t("completeAllFields"));
       return;
     }
 
     if (password !== confirmPassword) {
-      setError("Las contraseñas no coinciden");
+      setError(t("passwordsDontMatch"));
       return;
     }
 
     if (password.length < 6) {
-      setError("La contraseña debe tener al menos 6 caracteres");
+      setError(t("passwordMinLength"));
       return;
     }
 
@@ -66,7 +68,7 @@ const RegisterPage = () => {
         navigate("/");
       }
     } catch (err) {
-      setError("Error al registrar la cuenta. Inténtalo de nuevo.");
+      setError(t("registerError"));
     } finally {
       setLoading(false);
     }
@@ -78,13 +80,15 @@ const RegisterPage = () => {
         <Col md={6} lg={5}>
           <Card className="card-alamano">
             <Card.Body className="p-4">
-              <h2 className="text-center mb-4 accent-alamano">Crear Cuenta</h2>
+              <h2 className="text-center mb-4 accent-alamano">
+                {t("registerTitle")}
+              </h2>
 
               {error && <Alert variant="danger">{error}</Alert>}
 
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
-                  <Form.Label>Nombre completo</Form.Label>
+                  <Form.Label>{t("fullName")}</Form.Label>
                   <Form.Control
                     type="text"
                     name="name"
@@ -95,7 +99,7 @@ const RegisterPage = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                  <Form.Label>Correo electrónico</Form.Label>
+                  <Form.Label>{t("email")}</Form.Label>
                   <Form.Control
                     type="email"
                     name="email"
@@ -106,7 +110,7 @@ const RegisterPage = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                  <Form.Label>Contraseña</Form.Label>
+                  <Form.Label>{t("password")}</Form.Label>
                   <Form.Control
                     type="password"
                     name="password"
@@ -115,12 +119,12 @@ const RegisterPage = () => {
                     required
                   />
                   <Form.Text className="text-muted">
-                    La contraseña debe tener al menos 6 caracteres
+                    {t("passwordMinLength")}
                   </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                  <Form.Label>Confirmar contraseña</Form.Label>
+                  <Form.Label>{t("confirmPassword")}</Form.Label>
                   <Form.Control
                     type="password"
                     name="confirmPassword"
@@ -133,7 +137,7 @@ const RegisterPage = () => {
                 <Form.Group className="mb-3">
                   <Form.Check
                     type="checkbox"
-                    label="Acepto los términos y condiciones"
+                    label={t("acceptTerms")}
                     required
                   />
                 </Form.Group>
@@ -144,16 +148,16 @@ const RegisterPage = () => {
                   className="w-100"
                   disabled={loading}
                 >
-                  {loading ? "Creando cuenta..." : "Registrarse"}
+                  {loading ? t("creating") : t("register")}
                 </Button>
               </Form>
 
               <hr className="my-4" />
 
               <div className="text-center">
-                <p>¿Ya tienes una cuenta?</p>
+                <p>{t("alreadyHaveAccount")}</p>
                 <Link to="/login" className="btn btn-outline-primary w-100">
-                  Iniciar Sesión
+                  {t("login")}
                 </Link>
               </div>
             </Card.Body>

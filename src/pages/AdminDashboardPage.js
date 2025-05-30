@@ -15,10 +15,12 @@ import {
   Tab,
 } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
+import { useLanguage } from "../context/LanguageContext";
 import { reports, providers } from "../data/mockData";
 
 const AdminDashboardPage = () => {
   const { user, isAdmin } = useAuth();
+  const { t, formatDate } = useLanguage();
   const [reportsList, setReportsList] = useState([]);
   const [selectedReport, setSelectedReport] = useState(null);
   const [showReportModal, setShowReportModal] = useState(false);
@@ -87,18 +89,22 @@ const AdminDashboardPage = () => {
     const statusConfig = {
       pending: {
         bg: "secondary",
-        text: "Pendiente",
+        text: t("pending"),
         className: "status-pending",
       },
-      reviewed: { bg: "info", text: "Revisado", className: "status-reviewed" },
+      reviewed: {
+        bg: "info",
+        text: t("reviewed"),
+        className: "status-reviewed",
+      },
       resolved: {
         bg: "success",
-        text: "Resuelto",
+        text: t("resolved"),
         className: "status-resolved",
       },
       dismissed: {
         bg: "dark",
-        text: "Desestimado",
+        text: t("dismissed"),
         className: "status-dismissed",
       },
     };
@@ -113,9 +119,9 @@ const AdminDashboardPage = () => {
 
   const getPriorityBadge = (priority) => {
     const priorityConfig = {
-      high: { bg: "dark", text: "Alta" },
-      medium: { bg: "secondary", text: "Media" },
-      low: { bg: "info", text: "Baja" },
+      high: { bg: "dark", text: t("high") },
+      medium: { bg: "secondary", text: t("medium") },
+      low: { bg: "info", text: t("low") },
     };
     return priorityConfig[priority] || { bg: "secondary", text: "Normal" };
   };
@@ -125,8 +131,8 @@ const AdminDashboardPage = () => {
       <Container className="py-5 text-center">
         <Alert variant="danger">
           <i className="bi bi-shield-exclamation fs-1 d-block mb-3 text-danger"></i>
-          <h4>Acceso Denegado</h4>
-          <p>No tienes permisos para acceder al panel de administración.</p>
+          <h4>{t("accessDenied")}</h4>
+          <p>{t("noPermissions")}</p>
         </Alert>
       </Container>
     );
@@ -138,9 +144,11 @@ const AdminDashboardPage = () => {
         <div>
           <h1 className="accent-alamano">
             <i className="bi bi-shield-check me-2"></i>
-            Panel de Administración
+            {t("adminPanel")}
           </h1>
-          <p className="text-muted">Bienvenido, {user?.name}</p>
+          <p className="text-muted">
+            {t("welcome")}, {user?.name}
+          </p>
         </div>
       </div>
 
@@ -151,7 +159,7 @@ const AdminDashboardPage = () => {
             <Card.Body className="text-center">
               <i className="bi bi-flag fs-1 accent-alamano"></i>
               <h3 className="mt-2 accent-alamano">{stats.totalReports}</h3>
-              <p className="text-muted mb-0">Total Reportes</p>
+              <p className="text-muted mb-0">{t("totalReports")}</p>
             </Card.Body>
           </Card>
         </Col>
@@ -162,7 +170,7 @@ const AdminDashboardPage = () => {
               <h3 className="mt-2 accent-secondary-alamano">
                 {stats.pendingReports}
               </h3>
-              <p className="text-muted mb-0">Pendientes</p>
+              <p className="text-muted mb-0">{t("pending")}</p>
             </Card.Body>
           </Card>
         </Col>
@@ -171,7 +179,7 @@ const AdminDashboardPage = () => {
             <Card.Body className="text-center">
               <i className="bi bi-check-circle fs-1 accent-alamano"></i>
               <h3 className="mt-2 accent-alamano">{stats.resolvedReports}</h3>
-              <p className="text-muted mb-0">Resueltos</p>
+              <p className="text-muted mb-0">{t("resolved")}</p>
             </Card.Body>
           </Card>
         </Col>
@@ -180,32 +188,35 @@ const AdminDashboardPage = () => {
             <Card.Body className="text-center">
               <i className="bi bi-people fs-1 accent-alamano"></i>
               <h3 className="mt-2 accent-alamano">{stats.activeProviders}</h3>
-              <p className="text-muted mb-0">Proveedores Activos</p>
+              <p className="text-muted mb-0">{t("activeProviders")}</p>
             </Card.Body>
           </Card>
         </Col>
       </Row>
 
       <Tabs defaultActiveKey="reports" className="mb-4">
-        <Tab eventKey="reports" title={`Reportes (${stats.totalReports})`}>
+        <Tab
+          eventKey="reports"
+          title={`${t("reports")} (${stats.totalReports})`}
+        >
           <Card className="card-alamano">
             <Card.Header className="bg-light-alamano">
               <h4 className="mb-0">
                 <i className="bi bi-flag me-2"></i>
-                Gestión de Reportes
+                {t("reportsManagement")}
               </h4>
             </Card.Header>
             <Card.Body>
               <Table responsive hover className="table-hover">
                 <thead>
                   <tr>
-                    <th>Fecha</th>
-                    <th>Proveedor</th>
-                    <th>Reportado por</th>
-                    <th>Motivo</th>
-                    <th>Prioridad</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
+                    <th>{t("date")}</th>
+                    <th>{t("provider")}</th>
+                    <th>{t("reportedBy")}</th>
+                    <th>{t("reason")}</th>
+                    <th>{t("priority")}</th>
+                    <th>{t("status")}</th>
+                    <th>{t("actions")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -215,7 +226,7 @@ const AdminDashboardPage = () => {
 
                     return (
                       <tr key={report.id}>
-                        <td>{new Date(report.date).toLocaleDateString()}</td>
+                        <td>{formatDate(new Date(report.date))}</td>
                         <td>
                           <strong className="accent-alamano">
                             {report.providerName}
@@ -243,7 +254,7 @@ const AdminDashboardPage = () => {
                             onClick={() => handleViewReport(report)}
                           >
                             <i className="bi bi-eye me-1"></i>
-                            Ver
+                            {t("view")}
                           </Button>
                         </td>
                       </tr>
@@ -255,7 +266,7 @@ const AdminDashboardPage = () => {
               {reportsList.length === 0 && (
                 <div className="text-center py-4">
                   <i className="bi bi-inbox fs-1 text-muted"></i>
-                  <p className="text-muted mt-2">No hay reportes disponibles</p>
+                  <p className="text-muted mt-2">{t("noReportsAvailable")}</p>
                 </div>
               )}
             </Card.Body>
@@ -264,25 +275,25 @@ const AdminDashboardPage = () => {
 
         <Tab
           eventKey="providers"
-          title={`Proveedores (${stats.totalProviders})`}
+          title={`${t("providers")} (${stats.totalProviders})`}
         >
           <Card className="card-alamano">
             <Card.Header className="bg-light-alamano">
               <h4 className="mb-0">
                 <i className="bi bi-people me-2"></i>
-                Gestión de Proveedores
+                {t("providersManagement")}
               </h4>
             </Card.Header>
             <Card.Body>
               <Table responsive hover className="table-hover">
                 <thead>
                   <tr>
-                    <th>Proveedor</th>
-                    <th>Categoría</th>
-                    <th>Ubicación</th>
-                    <th>Calificación</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
+                    <th>{t("provider")}</th>
+                    <th>{t("category")}</th>
+                    <th>{t("location")}</th>
+                    <th>{t("rating")}</th>
+                    <th>{t("status")}</th>
+                    <th>{t("actions")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -309,7 +320,7 @@ const AdminDashboardPage = () => {
                           </strong>
                         </div>
                       </td>
-                      <td>{provider.category}</td>
+                      <td>{t(`categories.${provider.categoryId}`)}</td>
                       <td>{provider.location}</td>
                       <td>
                         <div className="d-flex align-items-center">
@@ -324,7 +335,7 @@ const AdminDashboardPage = () => {
                       </td>
                       <td>
                         <Badge bg={provider.isAvailable ? "success" : "dark"}>
-                          {provider.isAvailable ? "Activo" : "Inactivo"}
+                          {provider.isAvailable ? t("active") : t("inactive")}
                         </Badge>
                       </td>
                       <td>
@@ -334,11 +345,11 @@ const AdminDashboardPage = () => {
                           className="me-2"
                         >
                           <i className="bi bi-eye me-1"></i>
-                          Ver
+                          {t("view")}
                         </Button>
                         <Button variant="outline-secondary" size="sm">
                           <i className="bi bi-pencil me-1"></i>
-                          Editar
+                          {t("edit")}
                         </Button>
                       </td>
                     </tr>
@@ -359,7 +370,7 @@ const AdminDashboardPage = () => {
         <Modal.Header closeButton className="bg-light-alamano">
           <Modal.Title>
             <i className="bi bi-flag me-2 accent-alamano"></i>
-            Detalles del Reporte
+            {t("reportDetails")}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -367,33 +378,34 @@ const AdminDashboardPage = () => {
             <div>
               <Row className="mb-3">
                 <Col md={6}>
-                  <strong>Fecha:</strong>{" "}
-                  {new Date(selectedReport.date).toLocaleDateString()}
+                  <strong>{t("date")}:</strong>{" "}
+                  {formatDate(new Date(selectedReport.date))}
                 </Col>
                 <Col md={6}>
-                  <strong>ID del Reporte:</strong>{" "}
+                  <strong>{t("reportId")}:</strong>{" "}
                   <span className="accent-alamano">{selectedReport.id}</span>
                 </Col>
               </Row>
 
               <Row className="mb-3">
                 <Col md={6}>
-                  <strong>Proveedor Reportado:</strong>{" "}
+                  <strong>{t("reportedProvider")}:</strong>{" "}
                   <span className="accent-alamano">
                     {selectedReport.providerName}
                   </span>
                 </Col>
                 <Col md={6}>
-                  <strong>Reportado por:</strong> {selectedReport.reporterName}
+                  <strong>{t("reportedBy")}:</strong>{" "}
+                  {selectedReport.reporterName}
                 </Col>
               </Row>
 
               <Row className="mb-3">
                 <Col md={6}>
-                  <strong>Motivo:</strong> {selectedReport.reasonText}
+                  <strong>{t("reason")}:</strong> {selectedReport.reasonText}
                 </Col>
                 <Col md={6}>
-                  <strong>Prioridad:</strong>
+                  <strong>{t("priority")}:</strong>
                   <Badge
                     bg={getPriorityBadge(selectedReport.priority).bg}
                     className="ms-2"
@@ -404,14 +416,14 @@ const AdminDashboardPage = () => {
               </Row>
 
               <div className="mb-3">
-                <strong>Detalles:</strong>
+                <strong>{t("details")}:</strong>
                 <p className="mt-2 p-3 bg-light-alamano rounded">
                   {selectedReport.details}
                 </p>
               </div>
 
               <div className="mb-3">
-                <strong>Estado Actual:</strong>
+                <strong>{t("currentStatus")}:</strong>
                 <Badge
                   bg={getStatusBadge(selectedReport.status).bg}
                   className="ms-2"
@@ -432,7 +444,7 @@ const AdminDashboardPage = () => {
               disabled={selectedReport?.status === "reviewed"}
             >
               <i className="bi bi-eye-check me-1"></i>
-              Marcar como Revisado
+              {t("markAsReviewed")}
             </Button>
             <Button
               variant="primary"
@@ -442,7 +454,7 @@ const AdminDashboardPage = () => {
               disabled={selectedReport?.status === "resolved"}
             >
               <i className="bi bi-check-circle me-1"></i>
-              Resolver
+              {t("resolve")}
             </Button>
             <Button
               variant="secondary"
@@ -452,7 +464,7 @@ const AdminDashboardPage = () => {
               disabled={selectedReport?.status === "dismissed"}
             >
               <i className="bi bi-x-circle me-1"></i>
-              Desestimar
+              {t("dismiss")}
             </Button>
           </div>
         </Modal.Footer>
