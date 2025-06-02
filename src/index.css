@@ -698,27 +698,84 @@ body {
 /* Footer personalizado */
 .footer-alamano {
   background-color: var(--alamano-dark) !important;
-  color: white;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-alamano h5 {
+  color: white !important;
+  font-weight: 600;
+}
+
+.footer-alamano h6 {
+  color: white !important;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.footer-alamano p {
+  color: rgba(255, 255, 255, 0.8) !important;
+  line-height: 1.6;
 }
 
 .footer-alamano a {
-  color: var(--alamano-light);
+  color: var(--alamano-light) !important;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-alamano a:hover {
-  color: white;
+  color: white !important;
   text-decoration: underline;
 }
 
 .footer-alamano .bi {
-  color: var(--alamano-light);
+  color: var(--alamano-light) !important;
   transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .footer-alamano .bi:hover {
-  color: var(--alamano-secondary);
+  color: var(--alamano-secondary) !important;
+  transform: scale(1.1);
+}
+
+.footer-alamano .text-muted {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.footer-alamano small {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.footer-alamano .list-unstyled li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-alamano .list-unstyled a {
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.footer-alamano .list-unstyled a:hover {
+  color: var(--alamano-light) !important;
+  transform: translateX(5px);
+  text-decoration: none;
+}
+
+/* Iconos de redes sociales */
+.footer-alamano .d-flex.gap-3 .bi {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.footer-alamano .d-flex.gap-3 .bi:hover {
+  background-color: var(--alamano-secondary);
+  color: white !important;
+  transform: translateY(-2px);
 }
 
 /* Cards con tema AlaMano */
@@ -941,6 +998,12 @@ a:hover {
   background-color: rgba(182, 231, 242, 0.3);
   color: var(--alamano-dark);
   border: 1px solid var(--alamano-light);
+}
+
+.status-resolved {
+  background-color: rgba(54, 152, 191, 0.1);
+  color: var(--alamano-primary);
+  border: 1px solid var(--alamano-primary);
 }
 
 .status-resolved {

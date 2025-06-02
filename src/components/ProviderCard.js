@@ -3,10 +3,12 @@ import { Card, Badge, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useFavorites } from "../context/FavoritesContext";
 import StarRating from "./StarRating";
+import { useLanguage } from "../context/LanguageContext";
 
 const ProviderCard = ({ provider }) => {
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorite = favorites.includes(provider.id);
+  const { t } = useLanguage();
 
   return (
     <Card className="h-100 provider-card card-alamano">
@@ -15,7 +17,7 @@ const ProviderCard = ({ provider }) => {
           bg={provider.isAvailable ? "success" : "dark"}
           className="availability-badge"
         >
-          {provider.isAvailable ? "Disponible" : "No disponible"}
+          {provider.isAvailable ? t("available") : t("notAvailable")}
         </Badge>
         <i
           className={`bi ${
@@ -51,7 +53,7 @@ const ProviderCard = ({ provider }) => {
           </span>
         </div>
         <Card.Text className="text-muted small mb-1">
-          {provider.category}
+          {t(`categories.${provider.categoryId}`)}
         </Card.Text>
         <Card.Text className="small mb-3">
           <i className="bi bi-geo-alt me-1 accent-secondary-alamano"></i>
@@ -60,7 +62,7 @@ const ProviderCard = ({ provider }) => {
         <Link to={`/provider/${provider.id}`}>
           <Button variant="primary" size="sm" className="w-100">
             <i className="bi bi-eye me-1"></i>
-            Ver perfil
+            {t("viewProfile")}
           </Button>
         </Link>
       </Card.Body>
