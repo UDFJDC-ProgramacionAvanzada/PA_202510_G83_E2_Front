@@ -27,6 +27,17 @@ const ProviderCard = ({ provider }) => {
             e.preventDefault();
             toggleFavorite(provider.id);
           }}
+          role="button"
+          tabIndex={0}
+          aria-label={
+            isFavorite ? t("removeFromFavorites") : t("addToFavorites")
+          }
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              toggleFavorite(provider.id);
+            }
+          }}
         ></i>
       </Card.Header>
       <div className="text-center pt-3">

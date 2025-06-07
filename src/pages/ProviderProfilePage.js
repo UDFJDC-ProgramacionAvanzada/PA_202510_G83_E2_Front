@@ -153,7 +153,7 @@ const ProviderProfilePage = () => {
           <Tab eventKey="about" title={t("about")}>
             <Row>
               <Col md={8}>
-                <h3 className="mb-3">{t("description")}</h3>
+                <h2 className="mb-3">{t("description")}</h2>
                 <p>{provider.description}</p>
 
                 <h3 className="mb-3 mt-4">{t("skills")}</h3>
@@ -172,7 +172,7 @@ const ProviderProfilePage = () => {
               <Col md={4}>
                 <div className="card mb-4">
                   <div className="card-body">
-                    <h4 className="card-title mb-3">{t("contactInfo")}</h4>
+                    <h3 className="card-title mb-3">{t("contactInfo")}</h3>
                     <p className="mb-2">
                       <i className="bi bi-telephone me-2"></i>
                       {provider.phone}
@@ -226,7 +226,7 @@ const ProviderProfilePage = () => {
           >
             <Row>
               <Col md={8}>
-                <h3 className="mb-4">{t("clientReviews")}</h3>
+                <h2 className="mb-4">{t("clientReviews")}</h2>
 
                 {providerReviews.length > 0 ? (
                   providerReviews.map((review) => (
@@ -240,7 +240,7 @@ const ProviderProfilePage = () => {
               <Col md={4}>
                 <div className="card">
                   <div className="card-body">
-                    <h4 className="card-title mb-3">{t("leaveReview")}</h4>
+                    <h3 className="card-title mb-3">{t("leaveReview")}</h3>
                     <ReviewForm onSubmit={handleReviewSubmit} />
                   </div>
                 </div>

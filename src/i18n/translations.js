@@ -11,6 +11,7 @@ export const translations = {
     register: "Registrarse",
     admin: "Admin",
     language: "Idioma",
+    toggleNavigation: "Alternar navegación",
 
     // Home Page
     heroTitle: "Encuentra el servicio que necesitas",
@@ -364,6 +365,7 @@ export const translations = {
     register: "Register",
     admin: "Admin",
     language: "Language",
+    toggleNavigation: "Toggle navigation",
 
     // Home Page
     heroTitle: "Find the service you need",

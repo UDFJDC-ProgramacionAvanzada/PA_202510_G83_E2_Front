@@ -146,6 +146,21 @@
   color: white;
 }
 
+/* Botones outline-light específicos para el header */
+.btn-outline-light {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+}
+
+.btn-outline-light:hover,
+.btn-outline-light:focus,
+.btn-outline-light:active {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.7);
+  color: white;
+}
+
 /* Colores de texto y fondo */
 .text-primary {
   color: var(--alamano-primary) !important;
@@ -205,7 +220,8 @@
 }
 
 .badge.bg-secondary {
-  background-color: var(--alamano-secondary) !important;
+  background-color: #495057 !important;
+  color: white !important;
 }
 
 .badge.bg-info {
@@ -229,7 +245,7 @@
 }
 
 .badge.bg-dark {
-  background-color: var(--alamano-dark) !important;
+  background-color: #212529 !important;
   color: white !important;
 }
 
@@ -404,6 +420,11 @@
   color: white !important;
   background-color: rgba(255, 255, 255, 0.15);
   transform: translateY(-1px);
+}
+
+.nav-link-custom:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
 }
 
 .nav-link-custom.admin-link {
@@ -637,15 +658,23 @@ body {
   cursor: pointer;
   transition: color 0.3s ease;
   font-size: 1.2rem;
-  color: var(--alamano-secondary);
+  color: #6c757d;
+  padding: 0.25rem;
+  border-radius: 50%;
 }
 
 .favorite-icon:hover {
   color: var(--alamano-primary);
+  background-color: rgba(54, 152, 191, 0.1);
+}
+
+.favorite-icon:focus {
+  outline: 2px solid var(--alamano-primary);
+  outline-offset: 2px;
 }
 
 .favorite-icon.active {
-  color: #dc3545;
+  color: #dc3545 !important;
 }
 
 .profile-header {
@@ -718,7 +747,7 @@ body {
 }
 
 .footer-alamano a {
-  color: var(--alamano-light) !important;
+  color: #b6e7f2 !important;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -729,7 +758,7 @@ body {
 }
 
 .footer-alamano .bi {
-  color: var(--alamano-light) !important;
+  color: #b6e7f2 !important;
   transition: color 0.3s ease;
   cursor: pointer;
 }
@@ -740,7 +769,7 @@ body {
 }
 
 .footer-alamano .text-muted {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #6c757d !important;
 }
 
 .footer-alamano small {
@@ -768,8 +797,9 @@ body {
   font-size: 1.5rem;
   padding: 0.5rem;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
   transition: all 0.3s ease;
+  color: #b6e7f2 !important;
 }
 
 .footer-alamano .d-flex.gap-3 .bi:hover {
@@ -998,12 +1028,6 @@ a:hover {
   background-color: rgba(182, 231, 242, 0.3);
   color: var(--alamano-dark);
   border: 1px solid var(--alamano-light);
-}
-
-.status-resolved {
-  background-color: rgba(54, 152, 191, 0.1);
-  color: var(--alamano-primary);
-  border: 1px solid var(--alamano-primary);
 }
 
 .status-resolved {

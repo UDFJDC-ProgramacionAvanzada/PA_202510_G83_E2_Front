@@ -39,6 +39,7 @@ const Header = () => {
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           className="ms-auto d-lg-none"
+          aria-label={t("toggleNavigation")}
         />
 
         {/* Barra de búsqueda (Desktop) */}
@@ -59,6 +60,7 @@ const Header = () => {
               variant="outline-light"
               type="submit"
               className="search-button"
+              aria-label={t("search")}
             >
               <i className="bi bi-search"></i>
             </Button>
@@ -83,6 +85,7 @@ const Header = () => {
                   variant="primary"
                   type="submit"
                   className="search-button-mobile"
+                  aria-label={t("search")}
                 >
                   <i className="bi bi-search"></i>
                 </Button>
