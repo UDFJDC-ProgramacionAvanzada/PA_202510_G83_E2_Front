@@ -37,7 +37,7 @@ const SearchBar = ({ className, showAdvanced = false }) => {
 
   return (
     <div className={className}>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} role="search">
         <Row className="g-2">
           <Col xs={12} md={showFilters ? 12 : 9}>
             <Form.Control
@@ -45,11 +45,18 @@ const SearchBar = ({ className, showAdvanced = false }) => {
               placeholder={t("whatServiceNeed")}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
+              aria-label={t("searchServices")}
+              id="main-search-input"
             />
           </Col>
           {!showFilters && (
             <Col xs={12} md={3}>
-              <Button variant="primary" type="submit" className="w-100">
+              <Button
+                variant="primary"
+                type="submit"
+                className="w-100"
+                aria-describedby="main-search-input"
+              >
                 {t("search")}
               </Button>
             </Col>
@@ -61,18 +68,32 @@ const SearchBar = ({ className, showAdvanced = false }) => {
             variant="link"
             onClick={() => setShowFilters(!showFilters)}
             className="p-0 text-decoration-none"
+            aria-expanded={showFilters}
+            aria-controls="advanced-filters"
           >
             {showFilters ? t("hideFilters") : t("showAdvancedFilters")}
           </Button>
         </div>
 
         <Collapse in={showFilters}>
-          <div>
+          <div
+            id="advanced-filters"
+            role="region"
+            aria-label={t("advancedFilters")}
+          >
             <Row className="mt-3 g-2">
               <Col xs={12} md={6}>
+                <Form.Label
+                  htmlFor="category-select"
+                  className="visually-hidden"
+                >
+                  {t("category")}
+                </Form.Label>
                 <Form.Select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
+                  id="category-select"
+                  aria-label={t("selectCategory")}
                 >
                   <option value="">{t("allCategories")}</option>
                   {categories.map((cat) => (
@@ -83,11 +104,19 @@ const SearchBar = ({ className, showAdvanced = false }) => {
                 </Form.Select>
               </Col>
               <Col xs={12} md={6}>
+                <Form.Label
+                  htmlFor="location-input"
+                  className="visually-hidden"
+                >
+                  {t("location")}
+                </Form.Label>
                 <Form.Control
                   type="text"
                   placeholder={t("location")}
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
+                  id="location-input"
+                  aria-label={t("enterLocation")}
                 />
               </Col>
               <Col xs={12} className="mt-3">

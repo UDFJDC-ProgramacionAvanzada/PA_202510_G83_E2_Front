@@ -1,295 +1,454 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
-/* Paleta de colores AlaMano */
+/* Paleta de colores AlaMano optimizada para accesibilidad */
 :root {
+  /* Colores primarios base */
   --alamano-primary: #3698bf;
   --alamano-secondary: #36a6bf;
   --alamano-light: #b6e7f2;
+  --alamano-neutral: #f2f2f2;
   --alamano-dark: #0d0d0d;
-  --alamano-primary-hover: #2a7a9f;
-  --alamano-secondary-hover: #2a8a9f;
-  --alamano-light-hover: #a0d9e8;
+
+  /* Variaciones del azul primario (#3698BF) */
+  --alamano-primary-50: #f0f8fc;
+  --alamano-primary-100: #d9eef7;
+  --alamano-primary-200: #b3ddef;
+  --alamano-primary-300: #8dcce7;
+  --alamano-primary-400: #67bbdf;
+  --alamano-primary-500: #3698bf;
+  /* Color base */
+  --alamano-primary-600: #2b7a9f;
+  --alamano-primary-700: #205c7f;
+  --alamano-primary-800: #153e5f;
+  --alamano-primary-900: #0a203f;
+
+  /* Variaciones del azul secundario (#36A6BF) */
+  --alamano-secondary-50: #f0f9fc;
+  --alamano-secondary-100: #d9f0f7;
+  --alamano-secondary-200: #b3e1ef;
+  --alamano-secondary-300: #8dd2e7;
+  --alamano-secondary-400: #67c3df;
+  --alamano-secondary-500: #36a6bf;
+  /* Color base */
+  --alamano-secondary-600: #2b859f;
+  --alamano-secondary-700: #20647f;
+  --alamano-secondary-800: #15435f;
+  --alamano-secondary-900: #0a223f;
+
+  /* Variaciones del azul claro (#B6E7F2) */
+  --alamano-light-50: #fafeff;
+  --alamano-light-100: #f0fbfe;
+  --alamano-light-200: #e1f7fd;
+  --alamano-light-300: #d2f3fc;
+  --alamano-light-400: #c4effb;
+  --alamano-light-500: #b6e7f2;
+  /* Color base */
+  --alamano-light-600: #92b9c2;
+  --alamano-light-700: #6e8b92;
+  --alamano-light-800: #4a5d61;
+  --alamano-light-900: #252f31;
+
+  /* Variaciones del gris neutro (#F2F2F2) */
+  --alamano-neutral-50: #ffffff;
+  --alamano-neutral-100: #fafafa;
+  --alamano-neutral-200: #f5f5f5;
+  --alamano-neutral-300: #f0f0f0;
+  --alamano-neutral-400: #ebebeb;
+  --alamano-neutral-500: #f2f2f2;
+  /* Color base */
+  --alamano-neutral-600: #c2c2c2;
+  --alamano-neutral-700: #919191;
+  --alamano-neutral-800: #616161;
+  --alamano-neutral-900: #303030;
+
+  /* Variaciones del negro (#0D0D0D) */
+  --alamano-dark-50: #f7f7f7;
+  --alamano-dark-100: #e3e3e3;
+  --alamano-dark-200: #c8c8c8;
+  --alamano-dark-300: #acacac;
+  --alamano-dark-400: #919191;
+  --alamano-dark-500: #757575;
+  --alamano-dark-600: #5a5a5a;
+  --alamano-dark-700: #3e3e3e;
+  --alamano-dark-800: #232323;
+  --alamano-dark-900: #0d0d0d;
+  /* Color base */
+
+  /* Colores de estado con buena accesibilidad */
+  --alamano-success: #2b8f47;
+  /* Verde accesible */
+  --alamano-success-light: #d4edda;
+  --alamano-warning: #b8860b;
+  /* Amarillo oscuro accesible */
+  --alamano-warning-light: #fff3cd;
+  --alamano-error: #c53030;
+  /* Rojo accesible */
+  --alamano-error-light: #fed7d7;
+  --alamano-info: var(--alamano-secondary-600);
+  --alamano-info-light: var(--alamano-light-200);
+
+  /* Colores de hover y focus */
+  --alamano-primary-hover: var(--alamano-primary-700);
+  --alamano-secondary-hover: var(--alamano-secondary-700);
+  --alamano-light-hover: var(--alamano-light-700);
+
+  /* Sombras con colores de la paleta */
+  --alamano-shadow-sm: 0 1px 2px rgba(54, 152, 191, 0.05);
+  --alamano-shadow: 0 1px 3px rgba(54, 152, 191, 0.1), 0 1px 2px rgba(54, 152, 191, 0.06);
+  --alamano-shadow-md: 0 4px 6px rgba(54, 152, 191, 0.07), 0 2px 4px rgba(54, 152, 191, 0.06);
+  --alamano-shadow-lg: 0 10px 15px rgba(54, 152, 191, 0.1), 0 4px 6px rgba(54, 152, 191, 0.05);
+  --alamano-shadow-xl: 0 20px 25px rgba(54, 152, 191, 0.1), 0 10px 10px rgba(54, 152, 191, 0.04);
+
+  /* Gradientes */
+  --alamano-gradient-primary: linear-gradient(135deg, var(--alamano-primary-500) 0%, var(--alamano-secondary-500) 100%);
+  --alamano-gradient-light: linear-gradient(135deg, var(--alamano-light-300) 0%, var(--alamano-light-500) 100%);
+  --alamano-gradient-dark: linear-gradient(135deg, var(--alamano-dark-700) 0%, var(--alamano-dark-900) 100%);
 }
 
-/* Sobrescribir colores primarios de Bootstrap */
+/* Sobrescribir colores primarios de Bootstrap con mejor accesibilidad */
 .btn-primary {
-  background-color: var(--alamano-primary);
-  border-color: var(--alamano-primary);
+  background-color: var(--alamano-primary-500);
+  border-color: var(--alamano-primary-500);
+  color: white;
 }
 
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active {
-  background-color: var(--alamano-primary-hover);
-  border-color: var(--alamano-primary-hover);
+  background-color: var(--alamano-primary-700);
+  border-color: var(--alamano-primary-700);
+  color: white;
   box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
 }
 
+.btn-primary:disabled {
+  background-color: var(--alamano-primary-300);
+  border-color: var(--alamano-primary-300);
+  color: var(--alamano-dark-600);
+}
+
 .btn-outline-primary {
-  color: var(--alamano-primary);
-  border-color: var(--alamano-primary);
+  color: var(--alamano-primary-700);
+  border-color: var(--alamano-primary-500);
+  background-color: transparent;
 }
 
 .btn-outline-primary:hover,
 .btn-outline-primary:focus,
 .btn-outline-primary:active {
-  background-color: var(--alamano-primary);
-  border-color: var(--alamano-primary);
+  background-color: var(--alamano-primary-500);
+  border-color: var(--alamano-primary-500);
   color: white;
 }
 
 /* Botones secundarios */
 .btn-secondary {
-  background-color: var(--alamano-secondary);
-  border-color: var(--alamano-secondary);
+  background-color: var(--alamano-secondary-500);
+  border-color: var(--alamano-secondary-500);
+  color: white;
 }
 
 .btn-secondary:hover,
 .btn-secondary:focus,
 .btn-secondary:active {
-  background-color: var(--alamano-secondary-hover);
-  border-color: var(--alamano-secondary-hover);
+  background-color: var(--alamano-secondary-700);
+  border-color: var(--alamano-secondary-700);
+  color: white;
 }
 
 .btn-outline-secondary {
-  color: var(--alamano-secondary);
-  border-color: var(--alamano-secondary);
+  color: var(--alamano-secondary-700);
+  border-color: var(--alamano-secondary-500);
+  background-color: transparent;
 }
 
 .btn-outline-secondary:hover,
 .btn-outline-secondary:focus,
 .btn-outline-secondary:active {
-  background-color: var(--alamano-secondary);
-  border-color: var(--alamano-secondary);
-  color: white;
-}
-
-/* Botones de información */
-.btn-info {
-  background-color: var(--alamano-light);
-  border-color: var(--alamano-light);
-  color: var(--alamano-dark);
-}
-
-.btn-info:hover,
-.btn-info:focus,
-.btn-info:active {
-  background-color: var(--alamano-light-hover);
-  border-color: var(--alamano-light-hover);
-  color: var(--alamano-dark);
-}
-
-.btn-outline-info {
-  color: var(--alamano-secondary);
-  border-color: var(--alamano-secondary);
-}
-
-.btn-outline-info:hover,
-.btn-outline-info:focus,
-.btn-outline-info:active {
-  background-color: var(--alamano-secondary);
-  border-color: var(--alamano-secondary);
+  background-color: var(--alamano-secondary-500);
+  border-color: var(--alamano-secondary-500);
   color: white;
 }
 
 /* Botones de éxito */
 .btn-success {
-  background-color: var(--alamano-secondary);
-  border-color: var(--alamano-secondary);
+  background-color: var(--alamano-success);
+  border-color: var(--alamano-success);
+  color: white;
 }
 
 .btn-success:hover,
 .btn-success:focus,
 .btn-success:active {
-  background-color: var(--alamano-secondary-hover);
-  border-color: var(--alamano-secondary-hover);
+  background-color: #1e6b32;
+  border-color: #1e6b32;
+  color: white;
 }
 
 .btn-outline-success {
-  color: var(--alamano-secondary);
-  border-color: var(--alamano-secondary);
+  color: var(--alamano-success);
+  border-color: var(--alamano-success);
 }
 
 .btn-outline-success:hover,
 .btn-outline-success:focus,
 .btn-outline-success:active {
-  background-color: var(--alamano-secondary);
-  border-color: var(--alamano-secondary);
+  background-color: var(--alamano-success);
+  border-color: var(--alamano-success);
   color: white;
 }
 
 /* Botones de advertencia */
 .btn-warning {
-  background-color: var(--alamano-light);
-  border-color: var(--alamano-light);
-  color: var(--alamano-dark);
+  background-color: var(--alamano-warning);
+  border-color: var(--alamano-warning);
+  color: white;
 }
 
 .btn-warning:hover,
 .btn-warning:focus,
 .btn-warning:active {
-  background-color: var(--alamano-light-hover);
-  border-color: var(--alamano-light-hover);
-  color: var(--alamano-dark);
+  background-color: #9a7209;
+  border-color: #9a7209;
+  color: white;
 }
 
 .btn-outline-warning {
-  color: var(--alamano-secondary);
-  border-color: var(--alamano-secondary);
+  color: var(--alamano-warning);
+  border-color: var(--alamano-warning);
 }
 
 .btn-outline-warning:hover,
 .btn-outline-warning:focus,
 .btn-outline-warning:active {
-  background-color: var(--alamano-secondary);
-  border-color: var(--alamano-secondary);
+  background-color: var(--alamano-warning);
+  border-color: var(--alamano-warning);
+  color: white;
+}
+
+/* Botones de error/peligro */
+.btn-danger {
+  background-color: var(--alamano-error);
+  border-color: var(--alamano-error);
+  color: white;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active {
+  background-color: #a02626;
+  border-color: #a02626;
+  color: white;
+}
+
+.btn-outline-danger {
+  color: var(--alamano-error);
+  border-color: var(--alamano-error);
+}
+
+.btn-outline-danger:hover,
+.btn-outline-danger:focus,
+.btn-outline-danger:active {
+  background-color: var(--alamano-error);
+  border-color: var(--alamano-error);
+  color: white;
+}
+
+/* Botones de información */
+.btn-info {
+  background-color: var(--alamano-info);
+  border-color: var(--alamano-info);
+  color: white;
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active {
+  background-color: var(--alamano-secondary-800);
+  border-color: var(--alamano-secondary-800);
+  color: white;
+}
+
+.btn-outline-info {
+  color: var(--alamano-info);
+  border-color: var(--alamano-info);
+}
+
+.btn-outline-info:hover,
+.btn-outline-info:focus,
+.btn-outline-info:active {
+  background-color: var(--alamano-info);
+  border-color: var(--alamano-info);
   color: white;
 }
 
 /* Botones outline-light específicos para el header */
 .btn-outline-light {
   color: white;
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.6);
   background-color: transparent;
 }
 
 .btn-outline-light:hover,
 .btn-outline-light:focus,
 .btn-outline-light:active {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.8);
   color: white;
 }
 
-/* Colores de texto y fondo */
+/* Colores de texto mejorados */
 .text-primary {
-  color: var(--alamano-primary) !important;
+  color: var(--alamano-primary-700) !important;
 }
 
 .text-secondary {
-  color: var(--alamano-secondary) !important;
+  color: var(--alamano-secondary-700) !important;
 }
 
 .text-success {
-  color: var(--alamano-secondary) !important;
+  color: var(--alamano-success) !important;
 }
 
 .text-warning {
-  color: var(--alamano-dark) !important;
+  color: var(--alamano-warning) !important;
 }
 
 .text-danger {
-  color: var(--alamano-dark) !important;
+  color: var(--alamano-error) !important;
 }
 
 .text-info {
-  color: var(--alamano-secondary) !important;
+  color: var(--alamano-info) !important;
 }
 
+.text-muted {
+  color: var(--alamano-dark-500) !important;
+}
+
+/* Colores de fondo */
 .bg-primary {
-  background-color: var(--alamano-primary) !important;
+  background-color: var(--alamano-primary-500) !important;
+  color: white !important;
 }
 
 .bg-secondary {
-  background-color: var(--alamano-secondary) !important;
-}
-
-.bg-info {
-  background-color: var(--alamano-light) !important;
-  color: var(--alamano-dark) !important;
+  background-color: var(--alamano-secondary-500) !important;
+  color: white !important;
 }
 
 .bg-success {
-  background-color: var(--alamano-secondary) !important;
+  background-color: var(--alamano-success) !important;
   color: white !important;
 }
 
 .bg-warning {
-  background-color: var(--alamano-light) !important;
-  color: var(--alamano-dark) !important;
+  background-color: var(--alamano-warning) !important;
+  color: white !important;
 }
 
 .bg-danger {
-  background-color: var(--alamano-dark) !important;
+  background-color: var(--alamano-error) !important;
   color: white !important;
 }
 
-/* Badges personalizados */
+.bg-info {
+  background-color: var(--alamano-info) !important;
+  color: white !important;
+}
+
+.bg-light {
+  background-color: var(--alamano-neutral-200) !important;
+  color: var(--alamano-dark-800) !important;
+}
+
+.bg-dark {
+  background-color: var(--alamano-dark-800) !important;
+  color: white !important;
+}
+
+/* Badges con mejor contraste */
 .badge.bg-primary {
-  background-color: var(--alamano-primary) !important;
+  background-color: var(--alamano-primary-600) !important;
+  color: white !important;
 }
 
 .badge.bg-secondary {
-  background-color: #495057 !important;
+  background-color: var(--alamano-dark-600) !important;
   color: white !important;
 }
 
-.badge.bg-info {
-  background-color: var(--alamano-light) !important;
-  color: var(--alamano-dark) !important;
-}
-
 .badge.bg-success {
-  background-color: var(--alamano-secondary) !important;
+  background-color: var(--alamano-success) !important;
   color: white !important;
 }
 
 .badge.bg-warning {
-  background-color: var(--alamano-light) !important;
-  color: var(--alamano-dark) !important;
+  background-color: var(--alamano-warning) !important;
+  color: white !important;
 }
 
 .badge.bg-danger {
-  background-color: var(--alamano-dark) !important;
+  background-color: var(--alamano-error) !important;
   color: white !important;
+}
+
+.badge.bg-info {
+  background-color: var(--alamano-info) !important;
+  color: white !important;
+}
+
+.badge.bg-light {
+  background-color: var(--alamano-neutral-300) !important;
+  color: var(--alamano-dark-800) !important;
 }
 
 .badge.bg-dark {
-  background-color: #212529 !important;
+  background-color: var(--alamano-dark-800) !important;
   color: white !important;
 }
 
-/* Alertas personalizadas */
+/* Alertas con colores optimizados */
 .alert-primary {
-  background-color: rgba(54, 152, 191, 0.1);
-  border-color: var(--alamano-primary);
-  color: var(--alamano-primary);
+  background-color: var(--alamano-primary-100);
+  border-color: var(--alamano-primary-300);
+  color: var(--alamano-primary-800);
 }
 
 .alert-secondary {
-  background-color: rgba(54, 166, 191, 0.1);
-  border-color: var(--alamano-secondary);
-  color: var(--alamano-secondary);
-}
-
-.alert-info {
-  background-color: rgba(182, 231, 242, 0.3);
-  border-color: var(--alamano-light);
-  color: var(--alamano-dark);
+  background-color: var(--alamano-secondary-100);
+  border-color: var(--alamano-secondary-300);
+  color: var(--alamano-secondary-800);
 }
 
 .alert-success {
-  background-color: rgba(54, 166, 191, 0.1);
-  border-color: var(--alamano-secondary);
-  color: var(--alamano-secondary);
+  background-color: var(--alamano-success-light);
+  border-color: var(--alamano-success);
+  color: #155724;
 }
 
 .alert-warning {
-  background-color: rgba(182, 231, 242, 0.3);
-  border-color: var(--alamano-light);
-  color: var(--alamano-dark);
+  background-color: var(--alamano-warning-light);
+  border-color: var(--alamano-warning);
+  color: #856404;
 }
 
 .alert-danger {
-  background-color: rgba(13, 13, 13, 0.1);
-  border-color: var(--alamano-dark);
-  color: var(--alamano-dark);
+  background-color: var(--alamano-error-light);
+  border-color: var(--alamano-error);
+  color: #721c24;
 }
 
-/* Navbar personalizado con mejor organización */
+.alert-info {
+  background-color: var(--alamano-info-light);
+  border-color: var(--alamano-info);
+  color: var(--alamano-secondary-800);
+}
+
+/* Navbar con gradiente mejorado */
 .navbar-alamano {
-  background: linear-gradient(135deg, var(--alamano-primary) 0%, var(--alamano-secondary) 100%) !important;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  background: var(--alamano-gradient-primary) !important;
+  box-shadow: var(--alamano-shadow-md);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.75rem 0;
 }
@@ -307,7 +466,7 @@
   transform: scale(1.05);
 }
 
-/* Barra de búsqueda */
+/* Barra de búsqueda con colores mejorados */
 .search-form-container {
   width: 100%;
   max-width: 700px;
@@ -320,13 +479,13 @@
   width: 100%;
   border-radius: 25px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--alamano-shadow-md);
 }
 
 .search-input {
   border: none;
   background-color: rgba(255, 255, 255, 0.95);
-  color: var(--alamano-dark);
+  color: var(--alamano-dark-800);
   padding: 0.75rem 1.25rem;
   font-size: 0.95rem;
   border-radius: 0;
@@ -337,10 +496,11 @@
   background-color: white;
   box-shadow: none;
   border: none;
+  outline: 2px solid var(--alamano-primary-300);
 }
 
 .search-input::placeholder {
-  color: rgba(13, 13, 13, 0.6);
+  color: var(--alamano-dark-400);
 }
 
 .search-button {
@@ -352,58 +512,14 @@
   transition: all 0.3s ease;
 }
 
-.search-button:hover {
+.search-button:hover,
+.search-button:focus {
   background-color: rgba(255, 255, 255, 0.3);
   color: white;
   border: none;
 }
 
-/* Búsqueda móvil */
-.search-form-mobile {
-  width: 100%;
-}
-
-.search-container-mobile {
-  display: flex;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.search-input-mobile {
-  border: none;
-  background-color: white;
-  color: var(--alamano-dark);
-  padding: 0.75rem;
-  border-radius: 0;
-  flex: 1;
-}
-
-.search-button-mobile {
-  border: none;
-  padding: 0.75rem 1rem;
-  border-radius: 0;
-}
-
-/* Navegación */
-.nav-links {
-  display: flex;
-  align-items: center;
-}
-
-.nav-group-container {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.nav-separator {
-  height: 24px;
-  width: 1px;
-  background-color: rgba(255, 255, 255, 0.3);
-  margin: 0 0.75rem;
-}
-
-/* Enlaces de navegación */
+/* Enlaces de navegación con colores mejorados */
 .nav-link-custom {
   color: rgba(255, 255, 255, 0.9) !important;
   text-decoration: none;
@@ -428,171 +544,26 @@
 }
 
 .nav-link-custom.admin-link {
-  background-color: rgba(220, 53, 69, 0.2);
-  border: 1px solid rgba(220, 53, 69, 0.3);
+  background-color: rgba(197, 48, 48, 0.2);
+  border: 1px solid rgba(197, 48, 48, 0.3);
 }
 
 .nav-link-custom.admin-link:hover {
-  background-color: rgba(220, 53, 69, 0.3);
+  background-color: rgba(197, 48, 48, 0.3);
 }
 
 .nav-link-custom.provider-link {
-  background-color: rgba(40, 167, 69, 0.2);
-  border: 1px solid rgba(40, 167, 69, 0.3);
+  background-color: rgba(43, 143, 71, 0.2);
+  border: 1px solid rgba(43, 143, 71, 0.3);
 }
 
 .nav-link-custom.provider-link:hover {
-  background-color: rgba(40, 167, 69, 0.3);
+  background-color: rgba(43, 143, 71, 0.3);
 }
 
-/* Enlace de perfil de usuario */
-.user-profile-link {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.user-profile-link:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-}
-
-.nav-text {
-  margin-left: 0.25rem;
-}
-
-/* Avatar pequeño en navegación */
-.user-avatar-small {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Botón de logout */
-.logout-btn {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  transition: all 0.3s ease;
-}
-
-.logout-btn:hover {
-  background-color: rgba(220, 53, 69, 0.2);
-  border-color: rgba(220, 53, 69, 0.3);
-  color: white;
-}
-
-/* Botones de autenticación */
-.auth-buttons-container {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.login-btn,
-.register-btn {
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.login-btn:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-1px);
-}
-
-.register-btn {
-  background-color: white;
-  color: var(--alamano-primary);
-  border: none;
-}
-
-.register-btn:hover {
-  background-color: rgba(255, 255, 255, 0.9);
-  color: var(--alamano-primary);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Toggle móvil */
-.navbar-toggler {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 0.5rem;
-}
-
-.navbar-toggler:focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
-}
-
-/* Responsive */
-@media (max-width: 991.98px) {
-  .nav-group-container {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 0.25rem;
-  }
-
-  .auth-buttons-container {
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-  }
-
-  .nav-link-custom {
-    justify-content: flex-start;
-    padding: 0.75rem;
-    margin: 0.125rem 0;
-  }
-
-  .logout-btn {
-    justify-content: flex-start;
-    padding: 0.75rem;
-    width: 100%;
-  }
-}
-
-@media (max-width: 575.98px) {
-  .navbar-alamano .navbar-brand {
-    font-size: 1.25rem;
-  }
-
-  .search-input-mobile {
-    font-size: 0.9rem;
-  }
-}
-
-/* Animación de entrada */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.navbar-alamano {
-  animation: fadeInDown 0.4s ease-out;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: var(--alamano-dark);
-}
-
+/* Hero section con gradiente mejorado */
 .hero-section {
-  background: linear-gradient(135deg, var(--alamano-primary) 0%, var(--alamano-secondary) 100%);
+  background: var(--alamano-gradient-primary);
   color: white;
   padding: 100px 0;
   position: relative;
@@ -615,70 +586,351 @@ body {
   z-index: 2;
 }
 
-.category-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  border: 1px solid rgba(54, 152, 191, 0.2);
-  background: white;
-}
-
-.category-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(54, 152, 191, 0.2);
-  border-color: var(--alamano-primary);
-}
-
-.category-card .text-primary {
-  color: var(--alamano-primary) !important;
-}
-
+/* Cards con colores mejorados */
+.category-card,
 .provider-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  border: 1px solid rgba(54, 152, 191, 0.2);
+  border: 1px solid var(--alamano-light-400);
   background: white;
 }
 
+.category-card:hover,
 .provider-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(54, 152, 191, 0.2);
-  border-color: var(--alamano-primary);
+  box-shadow: var(--alamano-shadow-lg);
+  border-color: var(--alamano-primary-400);
 }
 
+/* Elementos de acento con colores específicos */
+.accent-alamano {
+  color: var(--alamano-primary-700) !important;
+}
+
+.accent-secondary-alamano {
+  color: var(--alamano-secondary-700) !important;
+}
+
+.bg-light-alamano {
+  background-color: var(--alamano-light-200) !important;
+  color: var(--alamano-dark-800) !important;
+}
+
+/* Footer con colores mejorados */
+.footer-alamano {
+  background: var(--alamano-gradient-dark) !important;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-alamano h5,
+.footer-alamano h6 {
+  color: white !important;
+  font-weight: 600;
+}
+
+.footer-alamano p {
+  color: rgba(255, 255, 255, 0.8) !important;
+  line-height: 1.6;
+}
+
+.footer-alamano a {
+  color: var(--alamano-light-300) !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-alamano a:hover {
+  color: white !important;
+  text-decoration: underline;
+}
+
+/* Cards con tema AlaMano mejorado */
+.card-alamano {
+  border: 1px solid var(--alamano-light-400);
+  box-shadow: var(--alamano-shadow);
+  background: white;
+}
+
+.card-alamano:hover {
+  box-shadow: var(--alamano-shadow-md);
+  border-color: var(--alamano-secondary-400);
+}
+
+.card-alamano .card-header {
+  background-color: var(--alamano-light-200);
+  border-bottom-color: var(--alamano-secondary-300);
+  color: var(--alamano-dark-800);
+}
+
+/* Formularios con colores mejorados */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--alamano-primary-500);
+  box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
+}
+
+.form-check-input:checked {
+  background-color: var(--alamano-primary-500);
+  border-color: var(--alamano-primary-500);
+}
+
+.form-check-input:focus {
+  border-color: var(--alamano-primary-500);
+  box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
+}
+
+/* Tabs con colores mejorados */
+.nav-tabs .nav-link {
+  color: var(--alamano-secondary-600);
+  border-color: transparent;
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--alamano-primary-600);
+  border-color: var(--alamano-light-400);
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--alamano-primary-700);
+  background-color: white;
+  border-color: var(--alamano-primary-500) var(--alamano-primary-500) white;
+}
+
+/* Tablas con colores mejorados */
+.table-hover tbody tr:hover {
+  background-color: var(--alamano-light-100);
+}
+
+.table thead th {
+  background-color: var(--alamano-light-200);
+  color: var(--alamano-dark-800);
+  border-bottom-color: var(--alamano-secondary-300);
+}
+
+/* Estados de reportes con colores específicos */
+.status-pending {
+  background-color: var(--alamano-secondary-100);
+  color: var(--alamano-secondary-800);
+  border: 1px solid var(--alamano-secondary-400);
+}
+
+.status-reviewed {
+  background-color: var(--alamano-info-light);
+  color: var(--alamano-info);
+  border: 1px solid var(--alamano-secondary-300);
+}
+
+.status-resolved {
+  background-color: var(--alamano-success-light);
+  color: var(--alamano-success);
+  border: 1px solid var(--alamano-success);
+}
+
+.status-dismissed {
+  background-color: var(--alamano-dark-100);
+  color: var(--alamano-dark-800);
+  border: 1px solid var(--alamano-dark-400);
+}
+
+/* Prioridades con colores específicos */
+.priority-high {
+  border-left: 4px solid var(--alamano-error);
+}
+
+.priority-medium {
+  border-left: 4px solid var(--alamano-warning);
+}
+
+.priority-low {
+  border-left: 4px solid var(--alamano-info);
+}
+
+/* Elementos interactivos con colores mejorados */
 .star-rating {
-  color: var(--alamano-secondary);
-}
-
-.text-warning .star-rating,
-.bi-star-fill.text-warning {
-  color: var(--alamano-secondary) !important;
+  color: var(--alamano-warning);
 }
 
 .favorite-icon {
-  cursor: pointer;
+  color: var(--alamano-dark-400);
   transition: color 0.3s ease;
-  font-size: 1.2rem;
-  color: #6c757d;
-  padding: 0.25rem;
-  border-radius: 50%;
 }
 
 .favorite-icon:hover {
-  color: var(--alamano-primary);
-  background-color: rgba(54, 152, 191, 0.1);
-}
-
-.favorite-icon:focus {
-  outline: 2px solid var(--alamano-primary);
-  outline-offset: 2px;
+  color: var(--alamano-primary-600);
+  background-color: var(--alamano-primary-100);
 }
 
 .favorite-icon.active {
-  color: #dc3545 !important;
+  color: var(--alamano-error) !important;
 }
 
+/* Availability badges con colores específicos */
+.availability-badge {
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.badge.bg-success {
+  background-color: var(--alamano-success) !important;
+  color: white !important;
+}
+
+.badge.bg-dark {
+  background-color: var(--alamano-dark-700) !important;
+  color: white !important;
+}
+
+/* Links con colores mejorados */
+a {
+  color: var(--alamano-primary-600);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--alamano-primary-800);
+  text-decoration: underline;
+}
+
+/* Separadores */
+.separator-alamano {
+  border-color: var(--alamano-light-400) !important;
+}
+
+/* Scrollbar personalizada con colores de la paleta */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--alamano-light-200);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--alamano-secondary-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--alamano-primary-500);
+}
+
+/* Estilos de accesibilidad mejorados */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--alamano-primary-700);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 1000;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  top: 0;
+  color: white;
+  text-decoration: none;
+}
+
+/* Focus mejorado */
+*:focus {
+  outline: 2px solid var(--alamano-primary-500);
+  outline-offset: 2px;
+}
+
+/* Modo de alto contraste */
+@media (prefers-contrast: high) {
+  :root {
+    --alamano-primary-500: #1a5f7a;
+    --alamano-secondary-500: #1a6b7a;
+    --alamano-light-500: #87cedb;
+    --alamano-dark-900: #000000;
+    --alamano-neutral-500: #ffffff;
+  }
+
+  .btn-primary,
+  .btn-outline-primary {
+    border: 2px solid #000;
+  }
+
+  .text-muted {
+    color: var(--alamano-dark-700) !important;
+  }
+}
+
+/* Responsive con colores optimizados */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 0;
+  }
+
+  .search-input-mobile {
+    background-color: white;
+    color: var(--alamano-dark-800);
+    border: 1px solid var(--alamano-light-400);
+  }
+
+  .search-input-mobile:focus {
+    border-color: var(--alamano-primary-500);
+    box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
+  }
+}
+
+/* Animaciones con respeto a preferencias de movimiento */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mejoras adicionales de contraste */
+.text-muted {
+  color: var(--alamano-dark-500) !important;
+}
+
+.bg-light-alamano .text-muted {
+  color: var(--alamano-dark-600) !important;
+}
+
+/* Asegurar contraste en elementos disabled */
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  background-color: var(--alamano-neutral-200);
+  color: var(--alamano-dark-600);
+  border-color: var(--alamano-neutral-400);
+}
+
+/* Elementos de estado con colores específicos */
+.stats-card {
+  background: var(--alamano-gradient-light);
+  border: 1px solid var(--alamano-secondary-300);
+  color: var(--alamano-dark-800);
+}
+
+.stats-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--alamano-shadow-md);
+}
+
+/* Profile header con gradiente suave */
 .profile-header {
-  background: linear-gradient(135deg, var(--alamano-light) 0%, rgba(182, 231, 242, 0.7) 100%);
+  background: var(--alamano-gradient-light);
   padding: 30px 0;
   margin-bottom: 30px;
 }
@@ -689,9 +941,10 @@ body {
   object-fit: cover;
   border-radius: 50%;
   border: 5px solid white;
-  box-shadow: 0 0 20px rgba(54, 152, 191, 0.3);
+  box-shadow: var(--alamano-shadow-lg);
 }
 
+/* Gallery images con bordes de la paleta */
 .gallery-image {
   width: 100%;
   height: 200px;
@@ -700,458 +953,107 @@ body {
   margin-bottom: 15px;
   cursor: pointer;
   transition: transform 0.3s ease, border-color 0.3s ease;
-  border: 2px solid var(--alamano-light);
+  border: 2px solid var(--alamano-light-400);
 }
 
 .gallery-image:hover {
   transform: scale(1.05);
-  border-color: var(--alamano-primary);
+  border-color: var(--alamano-primary-500);
 }
 
-.availability-badge {
-  font-size: 0.8rem;
-  padding: 5px 10px;
-  border-radius: 20px;
+/* Modales con colores mejorados */
+.modal-content {
+  border: 2px solid var(--alamano-primary-300);
 }
 
-.availability-badge.available {
-  background-color: var(--alamano-secondary);
-  color: white;
-}
-
-.availability-badge.unavailable {
-  background-color: var(--alamano-dark);
-  color: white;
-}
-
-/* Footer personalizado */
-.footer-alamano {
-  background-color: var(--alamano-dark) !important;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.footer-alamano h5 {
-  color: white !important;
-  font-weight: 600;
-}
-
-.footer-alamano h6 {
-  color: white !important;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.footer-alamano p {
-  color: rgba(255, 255, 255, 0.8) !important;
-  line-height: 1.6;
-}
-
-.footer-alamano a {
-  color: #b6e7f2 !important;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-alamano a:hover {
-  color: white !important;
-  text-decoration: underline;
-}
-
-.footer-alamano .bi {
-  color: #b6e7f2 !important;
-  transition: color 0.3s ease;
-  cursor: pointer;
-}
-
-.footer-alamano .bi:hover {
-  color: var(--alamano-secondary) !important;
-  transform: scale(1.1);
-}
-
-.footer-alamano .text-muted {
-  color: #6c757d !important;
-}
-
-.footer-alamano small {
-  color: rgba(255, 255, 255, 0.7) !important;
-}
-
-.footer-alamano .list-unstyled li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-alamano .list-unstyled a {
-  color: rgba(255, 255, 255, 0.8) !important;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.footer-alamano .list-unstyled a:hover {
-  color: var(--alamano-light) !important;
-  transform: translateX(5px);
-  text-decoration: none;
-}
-
-/* Iconos de redes sociales */
-.footer-alamano .d-flex.gap-3 .bi {
-  font-size: 1.5rem;
-  padding: 0.5rem;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.15);
-  transition: all 0.3s ease;
-  color: #b6e7f2 !important;
-}
-
-.footer-alamano .d-flex.gap-3 .bi:hover {
-  background-color: var(--alamano-secondary);
-  color: white !important;
-  transform: translateY(-2px);
-}
-
-/* Cards con tema AlaMano */
-.card-alamano {
-  border: 1px solid var(--alamano-light);
-  box-shadow: 0 2px 10px rgba(54, 152, 191, 0.1);
-  background: white;
-}
-
-.card-alamano:hover {
-  box-shadow: 0 4px 20px rgba(54, 152, 191, 0.15);
-  border-color: var(--alamano-secondary);
-}
-
-.card-alamano .card-header {
-  background-color: var(--alamano-light);
-  border-bottom-color: var(--alamano-secondary);
-  color: var(--alamano-dark);
-}
-
-/* Formularios */
-.form-control:focus {
-  border-color: var(--alamano-primary);
-  box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
-}
-
-.form-select:focus {
-  border-color: var(--alamano-primary);
-  box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
-}
-
-.form-check-input:checked {
-  background-color: var(--alamano-primary);
-  border-color: var(--alamano-primary);
-}
-
-.form-check-input:focus {
-  border-color: var(--alamano-primary);
-  box-shadow: 0 0 0 0.2rem rgba(54, 152, 191, 0.25);
-}
-
-/* Tabs */
-.nav-tabs .nav-link {
-  color: var(--alamano-secondary);
-  border-color: transparent;
-}
-
-.nav-tabs .nav-link:hover {
-  color: var(--alamano-primary);
-  border-color: var(--alamano-light);
-}
-
-.nav-tabs .nav-link.active {
-  color: var(--alamano-primary);
-  background-color: white;
-  border-color: var(--alamano-primary) var(--alamano-primary) white;
-}
-
-/* Elementos de acento */
-.accent-alamano {
-  color: var(--alamano-primary) !important;
-}
-
-.accent-secondary-alamano {
-  color: var(--alamano-secondary) !important;
-}
-
-.bg-light-alamano {
-  background-color: var(--alamano-light) !important;
-  color: var(--alamano-dark) !important;
-}
-
-/* Separadores */
-.separator-alamano {
-  border-color: var(--alamano-light) !important;
-}
-
-/* Dashboard específico */
-.dashboard-card {
-  border-left: 4px solid var(--alamano-primary);
-  background: white;
-}
-
-.stats-card {
-  background: linear-gradient(135deg, var(--alamano-light) 0%, rgba(182, 231, 242, 0.5) 100%);
-  border: 1px solid var(--alamano-secondary);
-  color: var(--alamano-dark);
-}
-
-.stats-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(54, 152, 191, 0.2);
-}
-
-/* Tablas */
-.table-hover tbody tr:hover {
-  background-color: rgba(182, 231, 242, 0.1);
-}
-
-.table thead th {
-  background-color: var(--alamano-light);
-  color: var(--alamano-dark);
-  border-bottom-color: var(--alamano-secondary);
-}
-
-/* Modales */
 .modal-header {
-  background-color: var(--alamano-light);
-  border-bottom-color: var(--alamano-secondary);
+  background-color: var(--alamano-light-200);
+  border-bottom-color: var(--alamano-secondary-300);
 }
 
 .modal-title {
-  color: var(--alamano-dark);
+  color: var(--alamano-dark-800);
 }
 
-/* Paginación */
-.page-link {
-  color: var(--alamano-primary);
-}
-
-.page-link:hover {
-  color: var(--alamano-primary-hover);
-  background-color: var(--alamano-light);
-  border-color: var(--alamano-secondary);
-}
-
-.page-item.active .page-link {
-  background-color: var(--alamano-primary);
-  border-color: var(--alamano-primary);
-}
-
-/* Dropdowns */
+/* Dropdowns con colores de la paleta */
 .dropdown-menu {
-  border-color: var(--alamano-light);
+  border-color: var(--alamano-light-400);
+  box-shadow: var(--alamano-shadow-md);
 }
 
 .dropdown-item:hover,
 .dropdown-item:focus {
-  background-color: var(--alamano-light);
-  color: var(--alamano-dark);
+  background-color: var(--alamano-light-200);
+  color: var(--alamano-dark-800);
 }
 
 /* Progress bars */
 .progress-bar {
-  background-color: var(--alamano-primary);
+  background-color: var(--alamano-primary-500);
 }
 
-/* Links */
-a {
-  color: var(--alamano-primary);
-  text-decoration: none;
+/* Paginación */
+.page-link {
+  color: var(--alamano-primary-600);
+  border-color: var(--alamano-light-400);
 }
 
-a:hover {
-  color: var(--alamano-primary-hover);
-  text-decoration: underline;
+.page-link:hover,
+.page-link:focus {
+  color: var(--alamano-primary-800);
+  background-color: var(--alamano-light-200);
+  border-color: var(--alamano-secondary-400);
 }
 
-/* Mejoras adicionales */
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.max-width-md {
-  max-width: 600px;
-}
-
-.text-decoration-none {
-  text-decoration: none !important;
-}
-
-.text-decoration-none:hover {
-  text-decoration: none !important;
-}
-
-/* Animaciones suaves */
-.fade-in {
-  animation: fadeIn 0.5s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Estilos específicos para admin */
-.admin-badge {
-  background: linear-gradient(45deg, var(--alamano-primary), var(--alamano-secondary));
-  color: white;
-  border: none;
-}
-
-.priority-high {
-  border-left: 4px solid #dc3545;
-}
-
-.priority-medium {
-  border-left: 4px solid var(--alamano-secondary);
-}
-
-.priority-low {
-  border-left: 4px solid var(--alamano-light);
-}
-
-/* Estados de reportes con colores de la paleta */
-.status-pending {
-  background-color: rgba(54, 166, 191, 0.1);
-  color: var(--alamano-secondary);
-  border: 1px solid var(--alamano-secondary);
-}
-
-.status-reviewed {
-  background-color: rgba(182, 231, 242, 0.3);
-  color: var(--alamano-dark);
-  border: 1px solid var(--alamano-light);
-}
-
-.status-resolved {
-  background-color: rgba(54, 152, 191, 0.1);
-  color: var(--alamano-primary);
-  border: 1px solid var(--alamano-primary);
-}
-
-.status-dismissed {
-  background-color: rgba(13, 13, 13, 0.1);
-  color: var(--alamano-dark);
-  border: 1px solid var(--alamano-dark);
-}
-
-/* Scrollbar personalizada */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--alamano-light);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--alamano-secondary);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--alamano-primary);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .hero-section {
-    padding: 60px 0;
-  }
-
-  .profile-image {
-    width: 120px;
-    height: 120px;
-  }
-
-  .stats-card {
-    margin-bottom: 1rem;
-  }
-
-  .navbar-alamano .navbar-brand {
-    font-size: 1.25rem;
-  }
-}
-
-/* Botón de favoritos personalizado */
-.btn-outline-secondary.favorite-active {
-  background-color: var(--alamano-secondary);
-  border-color: var(--alamano-secondary);
+.page-item.active .page-link {
+  background-color: var(--alamano-primary-500);
+  border-color: var(--alamano-primary-500);
   color: white;
 }
 
-.btn-outline-secondary.favorite-active:hover {
-  background-color: var(--alamano-secondary-hover);
-  border-color: var(--alamano-secondary-hover);
-  color: white;
+/* Asegurar que todos los elementos tengan suficiente contraste */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-scrolling: grayscale;
+  color: var(--alamano-dark-800);
+  background-color: var(--alamano-neutral-50);
 }
 
-/* Icono de corazón en favoritos */
-.favorite-icon.active {
-  color: var(--alamano-secondary) !important;
+/* Mejoras finales de accesibilidad */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
-/* Mejoras específicas del header */
-.navbar-alamano .input-group .form-control {
-  background-color: rgba(255, 255, 255, 0.95);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: var(--alamano-dark);
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
-.navbar-alamano .input-group .form-control:focus {
-  background-color: white;
-  border-color: var(--alamano-light);
-  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
-}
-
-.navbar-alamano .input-group .form-control::placeholder {
-  color: rgba(13, 13, 13, 0.6);
-}
-
-/* Animaciones para el header */
-@keyframes slideInDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.navbar-alamano {
-  animation: slideInDown 0.3s ease-out;
-}
-
-/* Efectos hover mejorados */
-.navbar-alamano .nav-link-custom,
-.navbar-alamano .nav-link {
-  position: relative;
-  overflow: hidden;
-}
-
-.navbar-alamano .nav-link-custom::before,
-.navbar-alamano .nav-link::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.navbar-alamano .nav-link-custom:hover::before,
-.navbar-alamano .nav-link:hover::before {
-  left: 100%;
+.sr-only-focusable:focus {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: inherit !important;
+  margin: inherit !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
 }

@@ -11,34 +11,35 @@ const ProviderCard = ({ provider }) => {
   const { t } = useLanguage();
 
   return (
-    <Card className="h-100 provider-card card-alamano">
+    <Card className="h-100 provider-card card-alamano" role="article">
       <Card.Header className="d-flex justify-content-between align-items-center bg-light-alamano border-0">
         <Badge
           bg={provider.isAvailable ? "success" : "dark"}
           className="availability-badge"
+          aria-label={`${t("status")}: ${
+            provider.isAvailable ? t("available") : t("notAvailable")
+          }`}
         >
           {provider.isAvailable ? t("available") : t("notAvailable")}
         </Badge>
-        <i
-          className={`bi ${
-            isFavorite ? "bi-heart-fill" : "bi-heart"
-          } favorite-icon ${isFavorite ? "active" : ""}`}
+        <Button
+          variant="link"
+          className={`favorite-icon ${isFavorite ? "active" : ""}`}
           onClick={(e) => {
             e.preventDefault();
+            e.stopPropagation();
             toggleFavorite(provider.id);
           }}
-          role="button"
-          tabIndex={0}
           aria-label={
             isFavorite ? t("removeFromFavorites") : t("addToFavorites")
           }
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              toggleFavorite(provider.id);
-            }
-          }}
-        ></i>
+          aria-pressed={isFavorite}
+        >
+          <i
+            className={`bi ${isFavorite ? "bi-heart-fill" : "bi-heart"}`}
+            aria-hidden="true"
+          ></i>
+        </Button>
       </Card.Header>
       <div className="text-center pt-3">
         <img
@@ -56,10 +57,18 @@ const ProviderCard = ({ provider }) => {
         />
       </div>
       <Card.Body className="text-center pt-2">
-        <Card.Title className="accent-alamano">{provider.name}</Card.Title>
-        <div className="mb-2">
+        <Card.Title
+          className="accent-alamano"
+          id={`provider-${provider.id}-name`}
+        >
+          {provider.name}
+        </Card.Title>
+        <div className="mb-2" aria-labelledby={`provider-${provider.id}-name`}>
           <StarRating rating={provider.rating} />
-          <span className="ms-2 text-muted small">
+          <span
+            className="ms-2 text-muted small"
+            aria-label={t("reviewsCount", { count: provider.reviewCount })}
+          >
             ({provider.reviewCount})
           </span>
         </div>

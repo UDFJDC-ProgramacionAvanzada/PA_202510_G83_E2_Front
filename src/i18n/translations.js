@@ -351,6 +351,16 @@ export const translations = {
     // Preferences
     preferences: "Preferencias",
     languageChangeNote: "Los cambios se aplicarán inmediatamente",
+
+    // Accessibility
+    skipToMainContent: "Saltar al contenido principal",
+    searchServices: "Buscar servicios",
+    searchButton: "Buscar",
+    status: "Estado",
+    reviewsCount: "({count} reseñas)",
+    advancedFilters: "Filtros avanzados",
+    selectCategory: "Seleccionar categoría",
+    enterLocation: "Ingresar ubicación",
   },
 
   en: {
@@ -700,5 +710,15 @@ export const translations = {
     // Preferences
     preferences: "Preferences",
     languageChangeNote: "Changes will be applied immediately",
+
+    // Accessibility
+    skipToMainContent: "Skip to main content",
+    searchServices: "Search services",
+    searchButton: "Search",
+    status: "Status",
+    reviewsCount: "({count} reviews)",
+    advancedFilters: "Advanced filters",
+    selectCategory: "Select category",
+    enterLocation: "Enter location",
   },
 };

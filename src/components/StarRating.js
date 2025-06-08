@@ -1,28 +1,71 @@
-"use client"
+"use client";
 
-const StarRating = ({ rating, size = "small", interactive = false, onRatingChange = null }) => {
-  const stars = [1, 2, 3, 4, 5]
+const StarRating = ({
+  rating,
+  size = "small",
+  interactive = false,
+  onRatingChange = null,
+}) => {
+  const stars = [1, 2, 3, 4, 5];
 
   const handleClick = (rating) => {
     if (interactive && onRatingChange) {
-      onRatingChange(rating)
+      onRatingChange(rating);
     }
-  }
+  };
 
-  const fontSize = size === "small" ? "fs-6" : size === "medium" ? "fs-5" : "fs-4"
+  const handleKeyDown = (event, rating) => {
+    if (interactive && (event.key === "Enter" || event.key === " ")) {
+      event.preventDefault();
+      handleClick(rating);
+    }
+  };
+
+  const fontSize =
+    size === "small" ? "fs-6" : size === "medium" ? "fs-5" : "fs-4";
 
   return (
-    <div className="d-inline-block">
-      {stars.map((star) => (
-        <i
-          key={star}
-          className={`bi ${star <= rating ? "bi-star-fill" : "bi-star"} ${fontSize} star-rating`}
-          style={{ cursor: interactive ? "pointer" : "default" }}
-          onClick={() => handleClick(star)}
-        ></i>
-      ))}
+    <div
+      className="d-inline-block"
+      role={interactive ? "radiogroup" : "img"}
+      aria-label={
+        interactive
+          ? "Selecciona una calificación"
+          : `Calificación: ${rating} de 5 estrellas`
+      }
+    >
+      {stars.map((star) =>
+        interactive ? (
+          <button
+            key={star}
+            type="button"
+            className={`btn btn-link p-0 star-rating-button ${fontSize}`}
+            onClick={() => handleClick(star)}
+            onKeyDown={(e) => handleKeyDown(e, star)}
+            aria-label={`${star} estrella${star !== 1 ? "s" : ""}`}
+            aria-pressed={star <= rating}
+            role="radio"
+            aria-checked={star <= rating}
+          >
+            <i
+              className={`bi ${
+                star <= rating ? "bi-star-fill" : "bi-star"
+              } ${fontSize} star-rating`}
+              aria-hidden="true"
+            ></i>
+          </button>
+        ) : (
+          <i
+            key={star}
+            className={`bi ${
+              star <= rating ? "bi-star-fill" : "bi-star"
+            } ${fontSize} star-rating`}
+            aria-hidden="true"
+          ></i>
+        )
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default StarRating
+export default StarRating;
