@@ -39,11 +39,11 @@ const StarRating = ({
           <button
             key={star}
             type="button"
+            tabIndex={0}
             className={`btn btn-link p-0 star-rating-button ${fontSize}`}
             onClick={() => handleClick(star)}
             onKeyDown={(e) => handleKeyDown(e, star)}
             aria-label={`${star} estrella${star !== 1 ? "s" : ""}`}
-            aria-pressed={star <= rating}
             role="radio"
             aria-checked={star <= rating}
           >
