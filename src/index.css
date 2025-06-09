@@ -445,25 +445,180 @@
   color: var(--alamano-secondary-800);
 }
 
-/* Navbar con gradiente mejorado */
+/* --- Estilos Base de la Navbar --- */
 .navbar-alamano {
   background: var(--alamano-gradient-primary) !important;
   box-shadow: var(--alamano-shadow-md);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.75rem 0;
+  /* Padding vertical para dar espacio */
 }
 
+/* --- Estilo del Logo --- */
 .navbar-alamano .navbar-brand {
   color: white !important;
   font-weight: bold;
   font-size: 1.5rem;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
-  padding: 0.5rem 0;
+  /* Asegura alineación vertical con el ícono */
+  display: flex;
+  align-items: center;
 }
 
 .navbar-alamano .navbar-brand:hover {
   transform: scale(1.05);
+}
+
+/* --- Contenedor Principal de la Navbar --- */
+/* Bootstrap ya hace display: flex y align-items: center en .container
+   cuando está dentro de un navbar. Vamos a usar justify-content para la distribución. */
+.navbar-alamano .container {
+  /* Distribuye los elementos: logo a la izquierda, búsqueda en el centro, nav/toggle a la derecha */
+  justify-content: space-between;
+  /* Añade un pequeño espacio entre elementos si no crecen */
+  gap: 1rem;
+}
+
+/* --- Barra de Búsqueda (Escritorio) --- */
+.navbar-alamano .search-form-container {
+  /* Permite que la barra de búsqueda ocupe el espacio disponible */
+  flex-grow: 1;
+  /* Limita el ancho para que no sea excesivamente grande */
+  max-width: 500px;
+  /* Añade espacio a la derecha, separándola de los enlaces de navegación */
+  margin-right: 1rem;
+}
+
+.navbar-alamano .search-container {
+  display: flex;
+  /* Para que el input y el botón de búsqueda estén en línea */
+  width: 100%;
+}
+
+.navbar-alamano .search-input {
+  flex-grow: 1;
+  /* El campo de texto ocupa la mayor parte del espacio */
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.navbar-alamano .search-button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* --- Barra de Búsqueda (Móvil) --- */
+.navbar-alamano .search-form-mobile {
+  display: flex;
+  /* Asegura que input y botón se alineen */
+  width: 100%;
+  margin-bottom: 1rem;
+  /* Espacio debajo de la búsqueda móvil */
+}
+
+.navbar-alamano .search-container-mobile {
+  display: flex;
+  width: 100%;
+}
+
+.navbar-alamano .search-input-mobile {
+  flex-grow: 1;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.navbar-alamano .search-button-mobile {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* --- Enlaces de Navegación (Nav) y Grupos de Botones --- */
+.navbar-alamano .nav-links {
+  /* ms-auto de Bootstrap ya lo empuja a la derecha. Aquí, centramos sus hijos. */
+  display: flex;
+  align-items: center;
+  /* Alinea verticalmente los elementos de navegación */
+  gap: 0.5rem;
+  /* Espacio entre los enlaces y botones */
+  flex-wrap: wrap;
+  /* Permite que los elementos se envuelvan si no hay espacio */
+}
+
+/* Estilos para los enlaces individuales (si los tienes) */
+.navbar-alamano .nav-link-custom {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  /* Para alinear ícono y texto */
+  align-items: center;
+  gap: 0.25rem;
+  /* Espacio entre ícono y texto */
+}
+
+.navbar-alamano .nav-link-custom:hover,
+.navbar-alamano .nav-link-custom:focus {
+  color: white !important;
+}
+
+/* Grupos de botones/enlaces para mejor alineación */
+.nav-group-container,
+.auth-buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Separador vertical */
+.nav-separator {
+  width: 1px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin: 0 0.5rem;
+}
+
+/* Avatar del usuario */
+.user-avatar-small {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* --- Ajustes Responsivos Básicos --- */
+@media (max-width: 991.98px) {
+
+  /* Punto de quiebre 'lg' de Bootstrap */
+  .navbar-alamano .navbar-collapse {
+    text-align: center;
+    /* Centra el texto dentro del menú móvil */
+  }
+
+  .navbar-alamano .nav-links,
+  .nav-group-container,
+  .auth-buttons-container {
+    flex-direction: column;
+    /* Apila los elementos verticalmente en móvil */
+    align-items: center;
+    /* Centra los ítems apilados */
+    width: 100%;
+    gap: 0.75rem;
+    /* Espacio un poco mayor al apilar */
+  }
+
+  /* Asegura que el nombre de usuario se vea en móvil */
+  .navbar-alamano .user-profile-link .nav-text {
+    display: inline !important;
+  }
+
+  /* Oculta el separador en móvil */
+  .nav-separator {
+    display: none !important;
+  }
 }
 
 /* Barra de búsqueda con colores mejorados */
@@ -1056,4 +1211,8 @@ body {
   overflow: visible !important;
   clip: auto !important;
   white-space: normal !important;
+}
+
+.advanced-filters-background {
+  background-color: #F2F2F2;
 }

@@ -70,6 +70,7 @@ const SearchBar = ({ className, showAdvanced = false }) => {
             className="p-0 text-decoration-none"
             aria-expanded={showFilters}
             aria-controls="advanced-filters"
+            style={{ color: "var(--alamano-primary-50)" }}
           >
             {showFilters ? t("hideFilters") : t("showAdvancedFilters")}
           </Button>
