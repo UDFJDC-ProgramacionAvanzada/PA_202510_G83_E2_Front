@@ -18,7 +18,7 @@ const CategoryCard = ({ category }) => {
         </div>
         <Card.Body>
           <Card.Title className="accent-alamano">
-            {t(`categories.${category.id}`)}
+            {t(`categories.${category.nombre}`)}
           </Card.Title>
           <Card.Text className="text-muted small">
             {t(`categoryDescriptions.${category.id}`)}

@@ -8,8 +8,31 @@ import { Link } from "react-router-dom";
 import { popularCategories, featuredProviders } from "../data/mockData";
 import { useLanguage } from "../context/LanguageContext";
 
+import { useState, useEffect } from "react";
+
 const HomePage = () => {
   const { t } = useLanguage();
+
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  // Fetch categories desde el backend:
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/categorias/get_all");
+        if (!response.ok) {
+          throw new Error("Error fetching categories");
+        }
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchCategories();
+  }, []); // [] significa que se ejecuta 1 sola vez al montar
 
   return (
     <>
@@ -42,9 +65,12 @@ const HomePage = () => {
               <p className="text-muted">{t("popularCategoriesSubtitle")}</p>
             </div>
             <Row xs={1} sm={2} md={3} lg={4} className="g-4" role="list">
-              {popularCategories.map((category) => (
+              {categories.map((category) => (
                 <Col key={category.id} role="listitem">
-                  <CategoryCard category={category} />
+                  <CategoryCard
+                    category={category}
+                    onClick={() => setSelectedCategory(category)}
+                  />
                 </Col>
               ))}
             </Row>
@@ -115,6 +141,15 @@ const HomePage = () => {
               </Card.Body>
             </Card>
           </section>
+
+          {/* Aquí podrías mostrar detalles del seleccionado */}
+          {selectedCategory && (
+            <section>
+              <h3>Detalles:</h3>
+              <p>{selectedCategory.nombre}</p>
+              {/* Más info */}
+            </section>
+          )}
         </main>
       </Container>
     </>
